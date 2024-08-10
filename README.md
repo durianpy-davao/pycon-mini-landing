@@ -9,7 +9,7 @@
 
 ### Reminders
 
-- The main route for the project is `page/index.astro`
+- The main route for the project is `pages/index.astro`
 - `Layout` from `layouts/Layout.astro` will be the wrapper for the whole app
 - Feel free to reuse and modify the different pre-defined UI components
 - You are also allowed to create your own components/files
