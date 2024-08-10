@@ -1,0 +1,132 @@
+---
+type ProgramItem = {
+  title: string;
+  timeStart: number;
+  timeEnd: number;
+};
+
+type Program = ProgramItem[];
+
+interface Props {
+  programStart?: number; // 12-Hour Format
+  programEnd?: number; // 12-Hour Format
+  programScheduleInterval?: number; // in Minutes
+  program?: Program;
+}
+
+const {
+  programStart = 1200,
+  programEnd = 1700,
+  programScheduleInterval = 30,
+  program = [
+    {
+      title: 'Registration',
+      timeStart: 1200,
+      timeEnd: 1230,
+    },
+    {
+      title: '1st Event',
+      timeStart: 1230,
+      timeEnd: 1330,
+    },
+    {
+      title: '2nd Event',
+      timeStart: 1350,
+      timeEnd: 1430,
+    },
+  ],
+} = Astro.props as Props;
+
+const totalProgramMinutes =
+  Math.floor(programEnd / 100) * 60 + (programEnd % 100) - (Math.floor(programStart / 100) * 60 + (programStart % 100));
+const intervalsCount = totalProgramMinutes / programScheduleInterval + 1;
+
+const convertTo12HourFormat = (time: number) => {
+  const hour = Math.floor(time / 100);
+  const minute = time % 100;
+  const formattedHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
+  const formattedMinute = minute < 10 ? `0${minute}` : minute;
+  return `${formattedHour}:${formattedMinute}`;
+};
+
+const generateTimeSlots = (start: number, interval: number, count: number) =>
+  Array.from({ length: count }, (_, i) => {
+    const totalMinutes = Math.floor(start / 100) * 60 + (start % 100) + i * interval;
+    const nextHour = Math.floor(totalMinutes / 60);
+    const nextMinute = totalMinutes % 60;
+    return nextHour * 100 + nextMinute;
+  });
+
+const generatedTime = generateTimeSlots(programStart, programScheduleInterval, intervalsCount);
+
+const timeWithPostFix = generatedTime.map((time) => ({
+  hour: convertTo12HourFormat(time),
+  postfix: time < 1200 || time >= 2400 ? 'AM' : 'PM',
+}));
+
+const formatTime = (time: number) => {
+  const hours = Math.floor(time / 100) % 12 || 12;
+  const minutes = (time % 100).toString().padStart(2, '0');
+  const period = time < 1200 ? 'AM' : 'PM';
+  return `${hours}:${minutes} ${period}`;
+};
+
+const getActivityRow = (activity: { timeStart: number; timeEnd: number }) => {
+  const startMinutes = Math.floor(activity.timeStart / 100) * 60 + (activity.timeStart % 100);
+  const endMinutes = Math.floor(activity.timeEnd / 100) * 60 + (activity.timeEnd % 100);
+
+  // Total duration in minutes
+  const durationInMinutes = endMinutes - startMinutes;
+
+  // Calculate rowSpan by dividing duration by the interval
+  const rowSpan = durationInMinutes / programScheduleInterval;
+
+  // Find the index of the closest start time in the generated time slots
+  const startRowIndex = generatedTime.findIndex((time) => {
+    const timeMinutes = Math.floor(time / 100) * 60 + (time % 100);
+    return timeMinutes >= startMinutes;
+  });
+
+  // Adjust for any fractional part of the start time
+  const closestTime = generatedTime[startRowIndex];
+  const closestTimeMinutes = Math.floor(closestTime / 100) * 60 + (closestTime % 100);
+  const fractionalPart = (startMinutes - closestTimeMinutes) / programScheduleInterval;
+
+  const startRow = startRowIndex + fractionalPart;
+
+  return { startRow, rowSpan };
+};
+---
+
+<section class="flex">
+  <div class="flex mx-auto" role="table">
+    <div class="flex flex-col border">
+      {
+        timeWithPostFix.map(({ hour, postfix }) => (
+          <div class="flex justify-center border-x-0 border-b-2 border-b-yellow-500 px-4 py-10 gap-1">
+            <span class="text-2xl">{hour}</span>
+            <span>{postfix}</span>
+          </div>
+        ))
+      }
+    </div>
+    <div class="flex flex-col relative w-64 md:w-80 border border-l-0">
+      {
+        program.map((event) => {
+          const { startRow, rowSpan } = getActivityRow(event);
+          return (
+            <div
+              class="absolute left-0 w-full px-2 bg-green-500 border border-yellow-200 text-white rounded text-ellipsis"
+              style={`top: ${(startRow * 100) / intervalsCount}%; height: ${(rowSpan * 100) / intervalsCount}%;`}
+            >
+              <p class="text-sm">
+                {formatTime(event.timeStart)} - {formatTime(event.timeEnd)}{' '}
+              </p>
+              <p class="text-sm">{event.title}</p>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
