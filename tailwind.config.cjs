@@ -11,11 +11,15 @@ module.exports = {
         accent: 'var(--aw-color-accent)',
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
+        pycon: {
+          purple: '#8428f5',
+          darkPurple: '#2a0455',
+          yellow: '#fef85d',
+        },
       },
       fontFamily: {
-        sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],
-        serif: ['var(--aw-font-serif, ui-serif)', ...defaultTheme.fontFamily.serif],
-        heading: ['var(--aw-font-heading, ui-sans-serif)', ...defaultTheme.fontFamily.sans],
+        montserrat: 'var(--font-montserrat)',
+        blippo: 'var(--font-blippo)',
       },
     },
   },
