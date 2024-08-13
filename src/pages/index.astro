@@ -103,7 +103,11 @@ const metadata = {
   />
 
   <!-- Schedule Widget **************** -->
-  <Schedule title="Event's program" subtitle="Take a look at the current program" />
+  <Schedule title="Event's program" subtitle="Take a look at the current program">
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Schedule>
 
   <!-- Content Widget **************** -->
   <Content

@@ -1,11 +1,11 @@
 ---
-type ProgramItem = {
+type Activity = {
   title: string;
   timeStart: number;
   timeEnd: number;
 };
 
-type Program = ProgramItem[];
+type Program = Activity[];
 
 interface Props {
   programStart?: number; // 12-Hour Format
@@ -34,11 +34,28 @@ const {
       timeStart: 1350,
       timeEnd: 1430,
     },
+    {
+      title: '3rd Event',
+      timeStart: 1430,
+      timeEnd: 1530,
+    },
+    {
+      title: '4th Event',
+      timeStart: 1540,
+      timeEnd: 1620,
+    },
+    {
+      title: 'Closing Remarks',
+      timeStart: 1645,
+      timeEnd: 1655,
+    },
   ],
 } = Astro.props as Props;
 
-const totalProgramMinutes =
-  Math.floor(programEnd / 100) * 60 + (programEnd % 100) - (Math.floor(programStart / 100) * 60 + (programStart % 100));
+// Reusable function to convert time to total minutes since start of day
+const convertTimeToMinutes = (time: number) => Math.floor(time / 100) * 60 + (time % 100);
+
+const totalProgramMinutes = convertTimeToMinutes(programEnd) - convertTimeToMinutes(programStart);
 const intervalsCount = totalProgramMinutes / programScheduleInterval + 1;
 
 const convertTo12HourFormat = (time: number) => {
@@ -51,7 +68,7 @@ const convertTo12HourFormat = (time: number) => {
 
 const generateTimeSlots = (start: number, interval: number, count: number) =>
   Array.from({ length: count }, (_, i) => {
-    const totalMinutes = Math.floor(start / 100) * 60 + (start % 100) + i * interval;
+    const totalMinutes = convertTimeToMinutes(start) + i * interval;
     const nextHour = Math.floor(totalMinutes / 60);
     const nextMinute = totalMinutes % 60;
     return nextHour * 100 + nextMinute;
@@ -72,24 +89,20 @@ const formatTime = (time: number) => {
 };
 
 const getActivityRow = (activity: { timeStart: number; timeEnd: number }) => {
-  const startMinutes = Math.floor(activity.timeStart / 100) * 60 + (activity.timeStart % 100);
-  const endMinutes = Math.floor(activity.timeEnd / 100) * 60 + (activity.timeEnd % 100);
+  const startMinutes = convertTimeToMinutes(activity.timeStart);
+  const endMinutes = convertTimeToMinutes(activity.timeEnd);
 
   // Total duration in minutes
-  const durationInMinutes = endMinutes - startMinutes;
+  const activityDuration = endMinutes - startMinutes;
 
   // Calculate rowSpan by dividing duration by the interval
-  const rowSpan = durationInMinutes / programScheduleInterval;
+  const rowSpan = activityDuration / programScheduleInterval;
 
   // Find the index of the closest start time in the generated time slots
-  const startRowIndex = generatedTime.findIndex((time) => {
-    const timeMinutes = Math.floor(time / 100) * 60 + (time % 100);
-    return timeMinutes >= startMinutes;
-  });
+  const startRowIndex = generatedTime.findIndex((time) => convertTimeToMinutes(time) >= startMinutes);
 
   // Adjust for any fractional part of the start time
-  const closestTime = generatedTime[startRowIndex];
-  const closestTimeMinutes = Math.floor(closestTime / 100) * 60 + (closestTime % 100);
+  const closestTimeMinutes = convertTimeToMinutes(generatedTime[startRowIndex]);
   const fractionalPart = (startMinutes - closestTimeMinutes) / programScheduleInterval;
 
   const startRow = startRowIndex + fractionalPart;
@@ -103,8 +116,8 @@ const getActivityRow = (activity: { timeStart: number; timeEnd: number }) => {
     <div class="flex flex-col border">
       {
         timeWithPostFix.map(({ hour, postfix }) => (
-          <div class="flex justify-center border-x-0 border-b-2 border-b-yellow-500 px-4 py-10 gap-1">
-            <span class="text-2xl">{hour}</span>
+          <div class="flex justify-center border-x-0 border-b-2 border-b-yellow-500 px-2 py-10 gap-1">
+            <span class="text-xl">{hour}</span>
             <span>{postfix}</span>
           </div>
         ))
@@ -116,13 +129,13 @@ const getActivityRow = (activity: { timeStart: number; timeEnd: number }) => {
           const { startRow, rowSpan } = getActivityRow(event);
           return (
             <div
-              class="absolute left-0 w-full px-2 bg-green-500 border border-yellow-200 text-white rounded text-ellipsis"
+              class="absolute left-0 w-full px-2 bg-green-500 border border-yellow-200 text-white rounded text-ellipsis text-xs font-bold"
               style={`top: ${(startRow * 100) / intervalsCount}%; height: ${(rowSpan * 100) / intervalsCount}%;`}
             >
-              <p class="text-sm">
+              <p>
                 {formatTime(event.timeStart)} - {formatTime(event.timeEnd)}{' '}
               </p>
-              <p class="text-sm">{event.title}</p>
+              <p>{event.title}</p>
             </div>
           );
         })
