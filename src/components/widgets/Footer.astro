@@ -51,7 +51,7 @@ const { socialLinks = [], theme = 'light' } = Astro.props;
 
       {
         socialLinks?.length ? (
-          <ul class="flex gap-2 mb-40">
+          <ul class="flex gap-2 mb-40 z-[2]">
             {socialLinks.map(({ ariaLabel, icon, href }) => (
               <li>
                 <a aria-label={ariaLabel} href={href}>
