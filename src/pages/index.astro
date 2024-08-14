@@ -37,13 +37,13 @@ const metadata = {
     ]}
   >
     <Fragment slot="title">
-      <div class="flex justify-center">
-        <Image src={pyconHero} width={600} height={289} alt="Pycon Hero" />
+      <div class="flex w-[100%] py-6 justify-center bg-[radial-gradient(rgba(0,0,0,0.28),rgba(255,255,255,0.02))]">
+        <Image class="md:w-[70%] md:h-auto" src={pyconHero} width={600} height={289} alt="Pycon Hero" />
       </div>
     </Fragment>
 
     <Fragment slot="subtitle">
-      <div class="mt-24 mb-16 flex flex-col text-lg font-bold md:flex-row md:text-2xl md:justify-between">
+      <div class="mt-24 mb-16 md:mt-10 flex flex-col text-lg font-bold md:flex-row md:text-2xl md:justify-between">
         <span>September 26, 2024</span>
         <a
           href="https://maps.app.goo.gl/NwnFYbzvmCDVih9r8"
