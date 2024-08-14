@@ -2,10 +2,12 @@
 import Note from '~/components/widgets/Note.astro';
 import { Icon } from 'astro-icon/components';
 import Button from '~/components/ui/Button.astro';
+import Image from 'astro/components/Image.astro';
+import pyconBlueprint from '~/assets/images/pycon-blueprint.svg';
 ---
 
-<section>
-  <div>
+<section class="flex flex-col items-center">
+  <div class="w-fit">
     <span>PYCON MINI DAVAO 2024</span>
     <span>SPONSORSHIP PROSPECTUS</span>
   </div>
@@ -17,13 +19,14 @@ import Button from '~/components/ui/Button.astro';
     </p>
   </Note>
 
-  <div>
-    <div>
-      <h3><span>About</span> Pycon</h3>
-      <h3>Mini Davao <span>2024</span></h3>
-
-      <Icon name="quote" class="w-[100px] h-[100px]" />
-      <p>
+  <div class="flex p-8 md:p-16 gap-10 w-11/12 max-w-[1300px]">
+    <div class="md:w-1/2">
+      <div class="font-bold text-xl md:mb-16 md:text-4xl md:w-[320px] text-pycon-yellow md:text-white">
+        <span class="text-pycon-yellow">About</span>
+        Pycon Mini Davao <span class="text-pycon-yellow">2024</span>
+      </div>
+      <Icon name="quote" class="w-[80px] md:w-[100px] h-auto" />
+      <p class="pl-8 md:pl-5 md:text-lg lg:text-2xl font-medium">
         PyCon Mini Davao 2024 is a half-day event dedicated to empowering the Python community in Davao City. Under the
         theme <span class="text-pycon-yellow">"Empowering Innovation Through Python" </span>this event will bring
         together Python developers, tech enthusiasts, and professionals to explore the role of Python in driving
@@ -31,6 +34,7 @@ import Button from '~/components/ui/Button.astro';
       </p>
     </div>
     <!-- Right: Image thing -->
+    <Image src={pyconBlueprint} alt="pycon blueprint" class="w-0 sm:w-1/2 h-auto" />
   </div>
 
   <div class="w-full py-8 md:py-20 px-10 gap-5 flex flex-col items-center text-center bg-[#8428F517]">
