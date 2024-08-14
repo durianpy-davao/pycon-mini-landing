@@ -33,7 +33,7 @@ const { socialLinks = [], theme = 'light' } = Astro.props;
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
   <Image src={gridBg} alt="Grid background" class="h-[85%] min-w-full absolute bottom-0 max-w-full z-[1]" />
-  <Image src={ellipse} alt="Ellipse background" class="h-[30%] min-w-full absolute bottom-0 max-w-full bg-bottom z-0" />
+  <Image src={ellipse} alt="Ellipse background" class="h-[20%] min-w-full absolute bottom-0 max-w-full bg-bottom z-0" />
   <div class="max-w-7xl mx-auto px-4 sm:px-6 z-[2]">
     <div class="flex flex-col items-center py-6 md:py-8">
       <Image src={pyconFooter} alt="White Pycon Mini logo" class="mix-blend-luminosity mb-12 z-[2]" />
@@ -51,7 +51,7 @@ const { socialLinks = [], theme = 'light' } = Astro.props;
 
       {
         socialLinks?.length ? (
-          <ul class="flex gap-2 mb-52">
+          <ul class="flex gap-2 mb-40">
             {socialLinks.map(({ ariaLabel, icon, href }) => (
               <li>
                 <a aria-label={ariaLabel} href={href}>
