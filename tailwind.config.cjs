@@ -10,7 +10,7 @@ module.exports = {
         secondary: 'var(--aw-color-secondary)',
         accent: 'var(--aw-color-accent)',
         default: 'var(--aw-color-text-default)',
-        muted: 'var(--aw-color-text-muted)',
+        muted: '#6c63a6',
         pycon: {
           purple: '#8428f5',
           darkPurple: '#2a0455',

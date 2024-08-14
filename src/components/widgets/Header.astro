@@ -47,7 +47,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
+    'top-0 z-40 flex-none w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
@@ -55,7 +55,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   <div class="absolute inset-0"></div>
   <div
     class:list={[
-      'relative text-default py-3 px-3 md:px-6 mx-auto w-full',
+      'relative text-default w-full',
       {
         'md:flex md:justify-between': position !== 'center',
       },
@@ -81,10 +81,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </div>
 
     <nav
-    class:list={[
-      { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
-      'hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0 md:justify-self-end',
-    ]}
+      class="items-center w-full md:w-auto hidden md:flex md:mx-5 text-white overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-center"
       aria-label="Main navigation"
     >
     <ul
@@ -133,3 +130,16 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </nav>
   </div>
 </header>
+
+<style>
+  #header {
+    background: conic-gradient(
+      from 90deg at 3.26% 50.72%,
+      #2a0455 -2.13deg,
+      #3a3921 119.88deg,
+      #2a0455 357.87deg,
+      #3a3921 479.88deg
+    );
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  }
+</style>
