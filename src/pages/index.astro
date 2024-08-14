@@ -11,6 +11,10 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { Image } from 'astro:assets';
+import pyconHero from '~/assets/images/hero/pycon-newversion 2.png';
+import { Icon } from 'astro-icon/components';
+import gridWarp1 from '~/assets/images/hero/grid-warp-1.png';
 import Schedule from '~/components/widgets/Schedule.astro';
 
 const metadata = {
@@ -23,31 +27,36 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
+    id="hero"
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
+        text: 'Get Tickets',
         href: 'https://github.com/onwidget/astrowind',
         target: '_blank',
-        icon: 'tabler:download',
+        // icon: 'tabler:download',
       },
-      { text: 'Learn more', href: '#features' },
+      // { text: 'Learn more', href: '#features' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 4.0</span> + Tailwind CSS
+      <div class="flex justify-center">
+        <Image src={pyconHero} width={600} height={289} alt="Pycon Hero" />
+      </div>
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 4.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+      <div class="flex flex-col text-lg font-bold md:flex-row md:text-2xl md:justify-between">
+        <span>September 26, 2024</span>
+        <span class="text-pycon-yellow flex items-center justify-center gap-2">
+          <Icon name="tabler:map-pin" />
+          Ateneo de Davao University
+        </span>
+      </div>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <Image class="absolute bottom-0 w-full" src={gridWarp1} alt="gridWarp1" quality={100} />
     </Fragment>
   </Hero>
 
