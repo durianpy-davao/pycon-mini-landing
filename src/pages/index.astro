@@ -2,7 +2,6 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
@@ -32,9 +31,8 @@ const metadata = {
       {
         variant: 'primary',
         text: 'Get Tickets',
-        href: 'https://github.com/onwidget/astrowind',
+        href: 'https://www.techtix.app/pycon-mini-davao-2024/preregister',
         target: '_blank',
-        // icon: 'tabler:download',
       },
       // { text: 'Learn more', href: '#features' },
     ]}
@@ -46,7 +44,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      <div class="flex flex-col text-lg font-bold md:flex-row md:text-2xl md:justify-between">
+      <div class="mt-24 mb-16 flex flex-col text-lg font-bold md:flex-row md:text-2xl md:justify-between">
         <span>September 26, 2024</span>
         <span class="text-pycon-yellow flex items-center justify-center gap-2">
           <Icon name="tabler:map-pin" />
@@ -59,10 +57,6 @@ const metadata = {
       <Image class="absolute bottom-0 w-full" src={gridWarp1} alt="gridWarp1" quality={100} />
     </Fragment>
   </Hero>
-
-  <!-- Note Widget ******************* -->
-
-  <Note />
 
   <!-- Features Widget *************** -->
 
