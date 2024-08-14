@@ -40,6 +40,7 @@ const { socialLinks = [], theme = 'light' } = Astro.props;
       <a
         class="font-montserrat text-pycon-yellow text-5xl mb-10 z-[2]"
         href="https://www.techtix.app/pycon-mini-davao-2024/preregister"
+        target="_blank"
       >
         GET TICKETS
       </a>
@@ -54,7 +55,7 @@ const { socialLinks = [], theme = 'light' } = Astro.props;
           <ul class="flex gap-2 mb-40 z-[2]">
             {socialLinks.map(({ ariaLabel, icon, href }) => (
               <li>
-                <a aria-label={ariaLabel} href={href}>
+                <a aria-label={ariaLabel} href={href} target="_blank">
                   {icon && <Icon name={icon} class="w-8 h-8" />}
                 </a>
               </li>
