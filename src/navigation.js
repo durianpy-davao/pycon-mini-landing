@@ -31,7 +31,7 @@ export const headerData = {
           href: getPermalink('/code-of-conduct'),
         },
         {
-          text: 'Prospectus',
+          text: 'Sponsorship Prospectus',
           href: getPermalink('/prospectus'),
         },
         {
