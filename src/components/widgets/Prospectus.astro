@@ -1,0 +1,49 @@
+---
+import Note from '~/components/widgets/Note.astro';
+import { Icon } from 'astro-icon/components';
+import Button from '~/components/ui/Button.astro';
+---
+
+<section>
+  <div>
+    <span>PYCON MINI DAVAO 2024</span>
+    <span>SPONSORSHIP PROSPECTUS</span>
+  </div>
+
+  <Note>
+    <p slot="content">
+      For sponsorship inquiries, please reach out to <strong>Arnel Jan Sarmiento</strong>, Community Lead of DurianPy
+      Davao Python User Group, at <strong>durianpy.davao@gmail.com</strong>.
+    </p>
+  </Note>
+
+  <div>
+    <div>
+      <h3><span>About</span> Pycon</h3>
+      <h3>Mini Davao <span>2024</span></h3>
+
+      <Icon name="quote" class="w-[100px] h-[100px]" />
+      <p>
+        PyCon Mini Davao 2024 is a half-day event dedicated to empowering the Python community in Davao City. Under the
+        theme <span class="text-pycon-yellow">"Empowering Innovation Through Python" </span>this event will bring
+        together Python developers, tech enthusiasts, and professionals to explore the role of Python in driving
+        innovation within local startups and agencies.
+      </p>
+    </div>
+    <!-- Right: Image thing -->
+  </div>
+
+  <div class="w-full py-8 md:py-20 px-10 gap-5 flex flex-col items-center text-center bg-[#8428F517]">
+    <h2 class="text-pycon-yellow text-4xl font-bold">GET INVOLVED</h2>
+    <p class="md:text-xl">
+      We are open to discussing customized sponsorship packages to best align with your business objectives. If you are
+      interested in sponsoring PyCon Mini Davao 2024 or have any questions, please contact us at
+      durianpy.davao@gmail.com.
+      <br />
+      <br />
+      We look forward to partnering with you to make PyCon Mini Davao 2024 a success!
+    </p>
+    <!-- TODO: add href -->
+    <Button variant="secondary" class="border-pycon-purple dark:border-pycon-purple py-2 md:text-lg">Contact Us</Button>
+  </div>
+</section>
