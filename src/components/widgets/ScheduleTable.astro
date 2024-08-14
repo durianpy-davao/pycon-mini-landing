@@ -1,6 +1,7 @@
 ---
 type Activity = {
   title: string;
+  description?: string;
   timeStart: number;
   timeEnd: number;
 };
@@ -63,6 +64,11 @@ const convertTo12HourFormat = (time: number) => {
   const minute = time % 100;
   const formattedHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
   const formattedMinute = minute < 10 ? `0${minute}` : minute;
+
+  if (!(programScheduleInterval % 60)) {
+    return `${formattedHour}`;
+  }
+
   return `${formattedHour}:${formattedMinute}`;
 };
 
@@ -111,31 +117,36 @@ const getActivityRow = (activity: { timeStart: number; timeEnd: number }) => {
 };
 ---
 
-<section class="flex">
-  <div class="flex mx-auto" role="table">
-    <div class="flex flex-col border">
+<section class="flex w-full overflow-x-auto xl:basis-2/3 relative z-[1]">
+  <div class="flex w-full min-w-[424px]" role="table">
+    <div class="flex flex-col">
       {
         timeWithPostFix.map(({ hour, postfix }) => (
-          <div class="flex justify-center border-x-0 border-b-2 border-b-yellow-500 px-2 py-10 gap-1">
-            <span class="text-xl">{hour}</span>
-            <span>{postfix}</span>
+          <div class="flex flex-col items-center px-2 py-10 gap-1">
+            <span class="text-3xl font-black">{hour}</span>
+            <span class="text-lg">{postfix}</span>
           </div>
         ))
       }
     </div>
-    <div class="flex flex-col relative w-64 md:w-80 border border-l-0">
+    <div class="flex flex-col relative w-full">
       {
         program.map((event) => {
           const { startRow, rowSpan } = getActivityRow(event);
           return (
             <div
-              class="absolute left-0 w-full px-2 bg-green-500 border border-yellow-200 text-white rounded text-ellipsis text-xs font-bold"
+              class="flex absolute left-0 w-full px-2 leading-[inherit] text-ellipsis !text-xs font-bold border-y border-y-white last:border-y-0"
               style={`top: ${(startRow * 100) / intervalsCount}%; height: ${(rowSpan * 100) / intervalsCount}%;`}
             >
-              <p>
-                {formatTime(event.timeStart)} - {formatTime(event.timeEnd)}{' '}
-              </p>
-              <p>{event.title}</p>
+              <span class="flex items-start w-full justify-between">
+                <span>
+                  <h3 class="text-lg md:text-xl text-pycon-yellow font-extrabold text-wrap">{event.title}</h3>
+                  {event.description && <p class="text-sm md:text-[14px] font-normal text-wrap">{event.description}</p>}
+                </span>
+                <p class="text-pycon-yellow text-end text-nowrap md:text-lg">
+                  {formatTime(event.timeStart)} - {formatTime(event.timeEnd)}
+                </p>
+              </span>
             </div>
           );
         })
