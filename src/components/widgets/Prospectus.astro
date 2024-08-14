@@ -4,9 +4,24 @@ import { Icon } from 'astro-icon/components';
 import Button from '~/components/ui/Button.astro';
 import Image from 'astro/components/Image.astro';
 import pyconBlueprint from '~/assets/images/pycon-blueprint.svg';
+
+const eventDetails = [
+  {
+    icon: 'calendar',
+    text: 'September 26, 2024 at 12:00 PM - 5:00 PM',
+  },
+  {
+    icon: 'pin',
+    text: 'Ateneo de Davao University (Tentative)',
+  },
+  {
+    icon: 'thinking',
+    text: 'Python Developers, Tech Startups, Agency Representatives, Computer Science Students, and Tech Enthusiasts',
+  },
+];
 ---
 
-<section class="flex flex-col items-center">
+<section class="flex flex-col items-center font-montserrat">
   <div class="w-fit">
     <span>PYCON MINI DAVAO 2024</span>
     <span>SPONSORSHIP PROSPECTUS</span>
@@ -19,7 +34,7 @@ import pyconBlueprint from '~/assets/images/pycon-blueprint.svg';
     </p>
   </Note>
 
-  <div class="flex p-8 md:p-16 gap-10 w-11/12 max-w-[1300px]">
+  <section class="flex p-8 md:p-16 gap-10 w-11/12 max-w-[1300px]">
     <div class="md:w-1/2">
       <div class="font-bold text-xl md:mb-16 md:text-4xl md:w-[320px] text-pycon-yellow md:text-white">
         <span class="text-pycon-yellow">About</span>
@@ -35,9 +50,22 @@ import pyconBlueprint from '~/assets/images/pycon-blueprint.svg';
     </div>
     <!-- Right: Image thing -->
     <Image src={pyconBlueprint} alt="pycon blueprint" class="w-0 sm:w-1/2 h-auto" />
-  </div>
+  </section>
 
-  <div class="w-full py-8 md:py-20 px-10 gap-5 flex flex-col items-center text-center bg-[#8428F517]">
+  <section class="w-full p-5 bg-[#8428F517]">
+    <h2 class="text-pycon-yellow font-bold text-xl sm:text-4xl mb-6">Event Details</h2>
+
+    {
+      eventDetails.map((detail) => (
+        <div class="flex sm:text-xl gap-2 items-start sm:items-center mb-4">
+          <Icon name={detail.icon} class="flex-shrink-0 w-5 sm:w-12 h-auto" />
+          <span class="leading-6">{detail.text}</span>
+        </div>
+      ))
+    }
+  </section>
+
+  <section class="w-full py-8 md:py-20 px-10 gap-5 flex flex-col items-center text-center bg-[#8428F517]">
     <h2 class="text-pycon-yellow text-4xl font-bold">GET INVOLVED</h2>
     <p class="md:text-xl">
       We are open to discussing customized sponsorship packages to best align with your business objectives. If you are
@@ -49,5 +77,5 @@ import pyconBlueprint from '~/assets/images/pycon-blueprint.svg';
     </p>
     <!-- TODO: add href -->
     <Button variant="secondary" class="border-pycon-purple dark:border-pycon-purple py-2 md:text-lg">Contact Us</Button>
-  </div>
+  </section>
 </section>
