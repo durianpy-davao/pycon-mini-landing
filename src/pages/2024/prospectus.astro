@@ -1,5 +1,4 @@
 ---
-
 import Layout from '~/layouts/PageLayout.astro';
 
 import Note from '~/components/widgets/Note.astro';
@@ -82,14 +81,14 @@ const metadata = {
         >SPONSORSHIP PROSPECTUS</span
       >
     </div>
-  
+
     <Note class="m-8">
       <p slot="content" class="text-left">
         For sponsorship inquiries, please reach out to <strong>Arnel Jan Sarmiento</strong>, Community Lead of DurianPy
         Davao Python User Group, at <strong>durianpy.davao@gmail.com</strong>.
       </p>
     </Note>
-  
+
     <section class="flex p-8 md:p-16 gap-10 w-11/12 max-w-[1300px]">
       <div class="md:w-7/12">
         <div class="font-bold text-xl xl:mb-16 md:text-4xl md:w-[320px] text-pycon-yellow md:text-white">
@@ -98,8 +97,8 @@ const metadata = {
         </div>
         <Icon name="quote" class="w-[80px] md:w-[100px] h-auto" />
         <p class="pl-8 md:pl-5 md:text-lg lg:text-2xl font-medium leading-6 lg:leading-9">
-          PyCon Mini Davao 2024 is a half-day event dedicated to empowering the Python community in Davao City. Under the
-          theme <span class="text-pycon-yellow">"Empowering Innovation Through Python" </span>this event will bring
+          PyCon Mini Davao 2024 is a half-day event dedicated to empowering the Python community in Davao City. Under
+          the theme <span class="text-pycon-yellow">"Empowering Innovation Through Python" </span>this event will bring
           together Python developers, tech enthusiasts, and professionals to explore the role of Python in driving
           innovation within local startups and agencies.
         </p>
@@ -107,40 +106,41 @@ const metadata = {
       <!-- Right: Image thing -->
       <Image src={pyconBlueprint} alt="pycon blueprint" class="w-0 sm:w-5/12 h-auto" />
     </section>
-  
-    <section class="flex w-full bg-pycon-purple bg-opacity-[0.17]">
-      <div class="p-8 pr-0 md:w-[600px]">
-        <h2 class="text-pycon-yellow font-bold text-xl sm:text-4xl mb-6">Event Details</h2>
+
+    <section class="flex min-w-full max-w-full bg-pycon-purple bg-opacity-[0.17] px-12">
+      <div class="sm:p-16 md:pr-16 p-8 pr-0 flex-grow">
+        <h2 class="text-pycon-yellow font-bold text-2xl sm:text-4xl mb-6">Event Details</h2>
         {
           eventDetails.map((detail) => (
-            <div class="flex sm:text-xl gap-2 items-start mb-4">
+            <div class="flex md:text-xl text-md gap-2 items-start mb-4">
               <Icon name={detail.icon} class="flex-shrink-0 w-5 sm:w-12 h-auto" />
               <span class="leading-9 -mt-2 sm:mt-2">{detail.text}</span>
             </div>
           ))
         }
       </div>
-      <Image src={map} alt="map" class="flex-shrink-0 h-full w-auto sm:h-[200%] relative top-0" />
+      <Image src={map} alt="map" class="h-fit md:mr-auto -mr-64 flex-shrink" />
     </section>
-  
+
     <section class="p-[1.75rem] md:p-24">
       <h2 class="text-pycon-yellow font-bold text-xl sm:text-4xl">Sponsorship Packages</h2>
       <p class="font-semibold mb-12">
-        We offer a range of sponsorship packages to meet your business goals. Below are the available sponsorship levels:
+        We offer a range of sponsorship packages to meet your business goals. Below are the available sponsorship
+        levels:
       </p>
-  
+
       <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-10">
         {sponsorshipPackages.map((sponsorship) => <SponsorshipPackage {...sponsorship} />)}
       </div>
     </section>
-  
+
     <section
       class="w-full py-8 md:py-20 px-10 gap-5 flex flex-col items-center text-center bg-pycon-purple bg-opacity-[0.17]"
     >
       <h2 class="text-pycon-yellow text-4xl font-bold">GET INVOLVED</h2>
       <p class="md:text-xl">
-        We are open to discussing customized sponsorship packages to best align with your business objectives. If you are
-        interested in sponsoring PyCon Mini Davao 2024 or have any questions, please contact us at
+        We are open to discussing customized sponsorship packages to best align with your business objectives. If you
+        are interested in sponsoring PyCon Mini Davao 2024 or have any questions, please contact us at
         durianpy.davao@gmail.com.
         <br />
         <br />
