@@ -1,0 +1,41 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Button from '~/components/ui/Button.astro';
+import floorGrid from '~/assets/images/code-of-conduct/floor-grid.png';
+import bgGrid from '~/assets/images/code-of-conduct/bg-grid.svg';
+
+const metadata = {
+  title: 'Pycon Mini Davao 2024 | Code of Conduct',
+};
+---
+
+<Layout metadata={metadata}>
+  <div class="font-montserrat p-8 md:p-20">
+    <section class="h-[calc(100vh-96px)]">
+      <h1 class="font-semibold text-xl sm:text-6xl xl:text-7xl mb-3 sm:mb-6">
+        Code of <span class="text-pycon-yellow">Conduct</span>
+      </h1>
+      <h2 class="font-semibold tracking-widest text-lg sm:text-3xl mb-5 sm:mb-10">PYCON MINI DAVAO 2024</h2>
+
+      <p class="sm:text-xl mb-5 sm:mb-10 sm:w-[85%] lg:w-[60%]">
+        <span class="text-pycon-yellow">Pycon Mini Davao </span> is a community event dedicated to promoting collaboration,
+        learning, and innovation within the Python community. We are committed to providing a welcoming, safe, and inclusive
+        environment for all participants. All attendees, speakers, exhibitors, organizers, and volunteers at PyCon Mini Davao
+        are required to adhere to the following Code of Conduct, which will be enforced throughout the event.
+      </p>
+
+      <Button variant="secondary" class="dark:border-white text-pycon-yellow">Read full version</Button>
+
+      <div class="block overflow-visible bg-gradient-to-t from-[#FEF85D4D] via-[#FEF85D1E] to-[#FFFFFF01]">
+        <div
+          class="block absolute inset-0 bottom-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat bg-contain bg-bottom max-h-[20h]"
+          style={`background-image: url(${floorGrid.src});`}
+        >
+        </div>
+      </div>
+    </section>
+  </div>
+
+  
+</Layout>
