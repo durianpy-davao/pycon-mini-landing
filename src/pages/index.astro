@@ -15,6 +15,7 @@ import { Image } from 'astro:assets';
 import pyconHero from '~/assets/images/hero/pycon-newversion 2.png';
 import { Icon } from 'astro-icon/components';
 import gridWarp1 from '~/assets/images/hero/grid-warp-1.png';
+import Schedule from '~/components/widgets/Schedule.astro';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -110,8 +111,15 @@ const metadata = {
     ]}
   />
 
-  <!-- Content Widget **************** -->
+  <!-- Schedule Widget **************** -->
+  <Schedule id="schedule" title="Schedule">
+    <Fragment slot="bg">
+      <div class="absolute inset-0" style="background: linear-gradient(180deg, #2A0455 70%, #3D3C19 100%);
+"></div>
+    </Fragment>
+  </Schedule>
 
+  <!-- Content Widget **************** -->
   <Content
     isReversed
     tagline="Inside template"
