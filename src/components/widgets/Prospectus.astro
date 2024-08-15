@@ -1,5 +1,6 @@
 ---
 import Note from '~/components/widgets/Note.astro';
+import SponsorshipPackages from './SponsorshipPackages.astro';
 import { Icon } from 'astro-icon/components';
 import Button from '~/components/ui/Button.astro';
 import Image from 'astro/components/Image.astro';
@@ -18,6 +19,45 @@ const eventDetails = [
   {
     icon: 'thinking',
     text: 'Python Developers, Tech Startups, Agency Representatives, Computer Science Students, and Tech Enthusiasts',
+  },
+];
+
+const sponsorshipPackages = [
+  {
+    heading: 'Silver Sponsor',
+    id: 'silver',
+    price: 7000,
+    benefits: [
+      'Logo placement on the event website and promotional materials.',
+      'Recognition as a Silver Sponsor during the event.',
+      '1 complimentary event pass for your team or guests.',
+      'Inclusion in the official event recap on the DurianPy blog.',
+    ],
+  },
+  {
+    heading: 'Gold Sponsor',
+    id: 'gold',
+    price: 15000,
+    benefits: [
+      'Prominent logo placement on the event website, select promotional materials, and event signage.',
+      'Recognition as a Gold Sponsor during the event, including in the official event communications.',
+      'Booth space at the venue.',
+      '2 complimentary event passes for your team or guests.',
+      'Mention in the official event recap on the DurianPy blog.',
+    ],
+  },
+  {
+    heading: 'Platinum Sponsor',
+    id: 'platinum',
+    price: 30000,
+    benefits: [
+      'Top-tier logo placement on the event website, promotional materials, and event signage.',
+      'Recognition as a Platinum Sponsor in all event communications, including opening and closing remarks.',
+      'Premium booth location at the venue with priority selection.',
+      '4 complimentary event passes for your team or guests.',
+      'Dedicated feature in the official event recap on the DurianPy blog.',
+      'Airing of a 2-minute promotional video during the event and livestream.',
+    ],
   },
 ];
 ---
@@ -76,11 +116,13 @@ const eventDetails = [
 
   <section>
     <h2 class="text-pycon-yellow font-bold text-xl sm:text-4xl">Sponsorship Packages</h2>
-    <p class="text-lg sm:text-xl">
+    <p class="font-semibold">
       We offer a range of sponsorship packages to meet your business goals. Below are the available sponsorship levels:
     </p>
 
-    <div class="flex justify-between"></div>
+    <div class="flex justify-between">
+      {sponsorshipPackages.map((sponsorship) => <SponsorshipPackages {...sponsorship} />)}
+    </div>
   </section>
 
   <section
