@@ -28,7 +28,7 @@ export interface Props {
 const { socialLinks = [], theme = 'light' } = Astro.props;
 ---
 
-<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
+<footer class:list={[{ dark: theme === 'dark' }, 'relative not-prose']}>
   <Image src={gridBg} alt="Grid background" class="h-[85%] min-w-full absolute bottom-0 max-w-full z-[1]" />
   <Image src={ellipse} alt="Ellipse background" class="h-[20%] min-w-full absolute bottom-0 max-w-full bg-bottom z-0" />
   <div class="max-w-7xl mx-auto px-4 sm:px-6 z-[2]">
