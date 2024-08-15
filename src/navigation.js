@@ -16,11 +16,11 @@ export const headerData = {
       links: [
         {
           text: 'Get Tickets',
-          href: getPermalink('/tickets'),
+          href: getPermalink('#hero'),
         },
         {
           text: 'What is PyCon?',
-          href: getPermalink('/#features'), // # = Same page anchor link
+          href: getPermalink('/#what-is-pycon'), // # = Same page anchor link
         },
         {
           text: 'Schedule',
@@ -28,20 +28,19 @@ export const headerData = {
         },
         {
           text: 'Code of Conduct',
-          href: getPermalink('/code-of-conduct'),
+          href: getPermalink('#code-of-conduct'),
         },
         {
           text: 'Sponsorship Prospectus',
-          href: getPermalink('/prospectus'),
+          href: getPermalink('#prospectus'),
         },
         {
           text: 'Contact Us',
           href: getPermalink('/#footer'),
-        }
+        },
       ],
     },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
 };
 
 export const footerData = {
