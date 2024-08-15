@@ -3,7 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
+import Card from '~/components/widgets/Card.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
@@ -21,6 +21,17 @@ const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
   ignoreTitleTemplate: true,
 };
+
+const cardContent = [
+  {
+    heading: 'PyCon',
+    text: 'PyCon, also known as the Python Annual Conference, is the annual event of the global Python community. The original PyCon was formed in North America in 2003, and now there are many other conferences being run in the PyCon spirit around the world.',
+  },
+  {
+    heading: 'PyCon Mini Davao',
+    text: "PyCon Mini Davao is a dedicated event in <b>Davao City</b> focused on the discussion and promotion of Python programming. Organized by local enthusiasts, this half-day event highlights Python's role in driving innovation across startups and agencies. We invite Python developers, tech enthusiasts, and beginners alike to join us in sharing knowledge, exchanging ideas, and building connections within the Python community. This year's PyCon Mini Davao emphasizes empowering innovation and fostering collaboration, aiming to inspire attendees and strengthen the Python ecosystem in the region.",
+  },
+];
 ---
 
 <Layout metadata={metadata}>
@@ -65,24 +76,11 @@ const metadata = {
   <Note />
 
   <!-- Features Widget *************** -->
- 
-  <Features
-  title="What is PyCon Mini Davao"
-  subtitle="Dedicated event in Davao City"
-  tagline="Empowering innovation and fostering collaboration"
-  items={[
-    {
-      title: "What is PyCon?",
-      description: "PyCon, also known as the Python Annual Conference, is the annual event of the global Python community. The original PyCon was formed in North America in 2003, and now there are many other conferences being run in the PyCon spirit around the world.",
-    },
-    {
-      title: "What is PyCon Mini Davao?",
-      description: "PyCon Mini Davao is a dedicated event in Davao City focused on the discussion and promotion of Python programming. Organized by local enthusiasts, this half-day event highlights Python’s role in driving innovation across startups and agencies.",
-    }
-  ]}
-  columns={2}
-/>
-  
+
+  <section class="flex gap-4 w-7/12 mx-auto ml-40 py-44">
+    {cardContent.map((item) => <Card {...item} />)}
+  </section>
+
   <!-- Schedule Widget **************** -->
   <Schedule id="schedule" title="Schedule">
     <Fragment slot="bg">
