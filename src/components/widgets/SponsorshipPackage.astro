@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import check from '~/assets/icons/check.svg';
+import Button from '~/components/ui/Button.astro';
 
 interface Props {
   heading: string;
@@ -12,23 +12,30 @@ interface Props {
 const { heading, id, price, benefits } = Astro.props;
 ---
 
-<section class="rounded-2xl px-8 py-4 border border-pycon-purple">
-  <div class="mb-6">
+<section class="rounded-2xl relative border border-pycon-purple lg:h-[28rem] overflow-clip">
+  <div class="px-8 py-4">
+    <div class="mb-6">
       <h2 class="font-semibold text-3xl inline-block text-transparent bg-clip-text" {...id ? { id } : {}}>{heading}</h2>
       <h4 class="font-semibold text-xl text-pycon-purple">₱{price.toLocaleString()}</h4>
-  </div>
-  <div>
-    <h3 class="font-medium text-xl mb-2">Benefits:</h3>
-    <div class="flex flex-col gap-2">
-      {
-        benefits.map((benefit) => (
-          <span class="flex gap-2 items-start leading-6">
-            <Icon name="check" class="flex-shrink-0 w-6 h-6" />
-            <p>{benefit}</p>
-          </span>
-        ))
-      }
     </div>
+    <div>
+      <h3 class="font-medium text-xl mb-2">Benefits:</h3>
+      <div class="flex flex-col gap-2">
+        {
+          benefits.map((benefit) => (
+            <span class="flex gap-2 items-start leading-6">
+              <Icon name="check" class="flex-shrink-0 w-6 h-6" />
+              <p>{benefit}</p>
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- TODO: make this functional and conditional -->
+  <div class="expand-bg absolute bottom-0 w-full rounded-b-2xl h-[30%] z-10 flex justify-end items-center px-8">
+    <Button variant='secondary' class="h-fit dark:border-white font-bold font-inter py-2 mt-4">Read More</Button>
   </div>
 </section>
 
@@ -41,5 +48,8 @@ const { heading, id, price, benefits } = Astro.props;
   }
   #platinum {
     background-image: linear-gradient(to bottom, #ffffff, #5c5c5c);
+  }
+  .expand-bg {
+    background: linear-gradient(180deg, rgba(73, 7, 148, 0) 0%, rgba(73, 7, 148, 0.55) 32.5%, #490794 65%, #490794 87%);
   }
 </style>
