@@ -19,6 +19,7 @@ import Schedule from '~/components/widgets/Schedule.astro';
 import ContactAndLicense from '~/components/widgets/ContactAndLicense.astro';
 import Button from '~/components/ui/Button.astro';
 import floorGrid from '~/assets/images/code-of-conduct/floor-grid.png';
+import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -84,7 +85,9 @@ const metadata = {
           environment for all participants. All attendees, speakers, exhibitors, organizers, and volunteers at PyCon Mini
           Davao are required to adhere to the following Code of Conduct, which will be enforced throughout the event.
         </p>
-        <Button variant="secondary" class="dark:border-white text-pycon-yellow">Read full version</Button>
+        <Button variant="secondary" class="dark:border-white text-pycon-yellow" href={getPermalink('code-of-conduct')}
+          >Read full version</Button
+        >
       </div>
 
       <div class="bg-gradient-to-t from-[#FEF85D4D] via-[#FEF85D1E] to-[#FFFFFF01]">
