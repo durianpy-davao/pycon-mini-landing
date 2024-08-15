@@ -23,13 +23,13 @@ const eventDetails = [
 ---
 
 <section class="flex flex-col items-center font-montserrat">
-  <div class="font-bold flex flex-col items-center">
+  <div class="flex flex-col items-center">
     <span
-      class="text-3xl bg-gradient-to-b from-[#FEF85D] via-[#CEC94C] to-[#989438] inline-block text-transparent bg-clip-text"
+      class="font-semibold text-xl sm:text-3xl bg-gradient-to-b from-[#FEF85D] via-[#CEC94C] to-[#989438] inline-block text-transparent bg-clip-text"
       >PYCON MINI DAVAO 2024</span
     >
     <span
-      class="text-[2.4rem] bg-gradient-to-b from-[#FEF85D] via-[#CEC94C] to-[#989438] inline-block text-transparent bg-clip-text"
+      class="font-bold text-2xl sm:text-[2.4rem] bg-gradient-to-b from-[#FEF85D] via-[#CEC94C] to-[#989438] inline-block text-transparent bg-clip-text"
       >SPONSORSHIP PROSPECTUS</span
     >
   </div>
@@ -59,14 +59,14 @@ const eventDetails = [
     <Image src={pyconBlueprint} alt="pycon blueprint" class="w-0 sm:w-1/2 h-auto" />
   </section>
 
-  <section class="flex w-full bg-[#8428F517]">
-    <div>
+  <section class="flex w-full bg-pycon-purple bg-opacity-[0.17]">
+    <div class="p-8 pr-0 md:w-[600px]">
       <h2 class="text-pycon-yellow font-bold text-xl sm:text-4xl mb-6">Event Details</h2>
       {
         eventDetails.map((detail) => (
-          <div class="flex sm:text-xl gap-2 items-start sm:items-center mb-4">
+          <div class="flex sm:text-xl gap-2 items-start mb-4">
             <Icon name={detail.icon} class="flex-shrink-0 w-5 sm:w-12 h-auto" />
-            <span class="leading-6">{detail.text}</span>
+            <span class="leading-9 -mt-2 sm:mt-2">{detail.text}</span>
           </div>
         ))
       }
@@ -83,7 +83,9 @@ const eventDetails = [
     <div class="flex justify-between"></div>
   </section>
 
-  <section class="w-full py-8 md:py-20 px-10 gap-5 flex flex-col items-center text-center bg-[#8428F517]">
+  <section
+    class="w-full py-8 md:py-20 px-10 gap-5 flex flex-col items-center text-center bg-pycon-purple bg-opacity-[0.17]"
+  >
     <h2 class="text-pycon-yellow text-4xl font-bold">GET INVOLVED</h2>
     <p class="md:text-xl">
       We are open to discussing customized sponsorship packages to best align with your business objectives. If you are
