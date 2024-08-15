@@ -1,0 +1,37 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { metadata } from './prospectusContent.js';
+import { getImage } from 'astro:assets';
+import Header from '~/components/widgets/prospectus/Header.astro';
+import AboutPycon from '~/components/widgets/prospectus/AboutPycon.astro';
+import EventDetails from '~/components/widgets/prospectus/EventDetails.astro';
+import WhySponsor from '~/components/widgets/prospectus/WhySponsor.astro';
+import SponsorPackages from '~/components/widgets/prospectus/SponsorPackages.astro';
+import GetInvolved from '~/components/widgets/prospectus/GetInvolved.astro';
+---
+
+<Layout metadata={metadata}>
+  <div class="relative">
+    <Header />
+    <AboutPycon />
+    <div
+      class="absolute inset-0 top-0 z-0 overflow-hidden bg-no-repeat bg-contain bg-right -right-48 md:-right-40 lg:right-0 filter brightness-75 md:brightness-100"
+    >
+    </div>
+  </div>
+  <div class="relative">
+    <EventDetails>
+      <Fragment slot="bg">
+        <div class="absolute inset-0 bg-pycon-purple bg-opacity-[0.17]"></div>
+      </Fragment>
+    </EventDetails>
+    <WhySponsor />
+    <SponsorPackages />
+  </div>
+
+  <GetInvolved>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-pycon-purple bg-opacity-[0.17]"></div>
+    </Fragment>
+  </GetInvolved>
+</Layout>

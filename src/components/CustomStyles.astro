@@ -1,4 +1,5 @@
 ---
+import '@fontsource-variable/montserrat';
 import '@fontsource-variable/inter';
 
 // 'DM Sans'
@@ -20,9 +21,27 @@ import '@fontsource-variable/inter';
 ---
 
 <style is:inline>
+  @font-face {
+    font-family: 'BlippoHeavy';
+    src: url('/fonts/blippo-heavy.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  p,
+  nav,
+  span,
+  div,
+  a {
+    color: white;
+    font-family: 'Montserrat Variable', sans-serif;
+  }
+
   :root {
-    --aw-font-sans: 'InterVariable';
-    --aw-font-serif: 'InterVariable';
+    --font-montserrat: 'Montserrat Variable', sans-serif;
+    --font-blippo: 'BlippoHeavy';
+    --font-inter: 'Inter Variable';
     --aw-font-heading: 'InterVariable';
 
     --aw-color-primary: rgb(1 97 239);
@@ -36,12 +55,16 @@ import '@fontsource-variable/inter';
 
     --aw-color-bg-page-dark: rgb(3 6 32);
 
-    ::selection {
+    --pycon-dark-purple: #2a0455;
+    --pycon-purple: #8428f5;
+    --pycon-yellow: #fef85d;
+
+    : selection {
       background-color: lavender;
     }
   }
 
-  .dark {
+  /* .dark {
     --aw-font-sans: 'InterVariable';
     --aw-font-serif: 'InterVariable';
     --aw-font-heading: 'InterVariable';
@@ -59,5 +82,5 @@ import '@fontsource-variable/inter';
       background-color: black;
       color: snow;
     }
-  }
+  } */
 </style>
