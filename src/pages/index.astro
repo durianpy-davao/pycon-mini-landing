@@ -80,19 +80,19 @@ const cardContent = [
 
   <!-- Features Widget *************** -->
 
-  <section class="relative">
-    <div
-      class="hidden xl:block absolute top-0 inset-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat bg-contain bg-right"
-      style={`background-image: url(${ellipse2.src}); background-position: 20% 50%; background-size: 55%;`}
-    >
-    </div>
-    <section class="flex gap-4 w-7/12 mx-auto ml-40 py-44">
+  <section class="relative mt-10 py-44">
+    <section class="flex gap-4 w-7/12 mx-auto ml-40">
       {cardContent.map((item) => <Card {...item} />)}
     </section>
     <div class="hidden xl:block basis-1/3 overflow-visible">
       <div
+        class="hidden xl:block absolute top-0 inset-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat bg-contain bg-right"
+        style={`background-image: url(${ellipse2.src}); background-position: 20% 50%; background-size: 55%;`}
+      >
+      </div>
+      <div
         class="hidden xl:block absolute inset-0 top-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat bg-contain bg-right"
-        style={`background-image: url(${questionMark.src}); background-position: 90% 85%; height: 90%`}
+        style={`background-image: url(${questionMark.src}); background-position: 90% 0%; background-size: 30%`}
       >
       </div>
     </div>
