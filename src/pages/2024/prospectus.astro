@@ -90,7 +90,7 @@ const metadata = {
     </Note>
 
     <section class="flex p-8 md:p-16 gap-10 w-11/12">
-      <div class="lg:w-7/12">
+      <div class="">
         <div class="font-bold text-xl xl:mb-16 md:text-4xl md:w-[50%] text-pycon-yellow md:text-white">
           <span class="text-pycon-yellow">About</span> Pycon <br />Mini Davao <span class="text-pycon-yellow">2024</span
           >
@@ -104,7 +104,11 @@ const metadata = {
         </p>
       </div>
       <!-- Right: Image thing -->
-      <Image src={pyconBlueprint} alt="pycon blueprint" class="max-h-[700px] lg:static absolute lg:visible invisible" />
+      <Image
+        src={pyconBlueprint}
+        alt="pycon blueprint"
+        class="w-[250%] max-h-[700px] md:static absolute md:visible invisible"
+      />
     </section>
 
     <section class="flex min-w-full max-w-full bg-pycon-purple bg-opacity-[0.17] px-12 overflow-x-hidden">
