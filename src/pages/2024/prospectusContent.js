@@ -1,21 +1,21 @@
 export const eventDetails = [
   {
-    icon: 'calendar',
+    icon: 'tabler:calendar-week',
     text: 'September 26, 2024 at 12:00 PM - 5:00 PM',
   },
   {
-    icon: 'pin',
+    icon: 'tabler:map-pin',
     text: 'Ateneo de Davao University (Tentative)',
   },
   {
-    icon: 'thinking',
+    icon: 'tabler:target-arrow',
     text: 'Python Developers, Tech Startups, Agency Representatives, Computer Science Students, and Tech Enthusiasts',
   },
 ];
 
 export const sponsorshipDetails = [
   {
-    icon: 'rocket',
+    icon: 'tabler:rocket',
     heading: 'Visibility and Branding',
     items: [
       'Gain exposure to a growing tech-savvy audience in Davao City.',
@@ -24,7 +24,7 @@ export const sponsorshipDetails = [
     ],
   },
   {
-    icon: 'people',
+    icon: 'tabler:users-group',
     heading: 'Networking and Recruitment',
     items: [
       'Engage with talented Python developers and professionals.',
@@ -33,7 +33,7 @@ export const sponsorshipDetails = [
     ],
   },
   {
-    icon: 'graph',
+    icon: 'tabler:empathize',
     heading: 'Community Impact',
     items: [
       'Contribute to the growth and development of the Python community in Davao.',
