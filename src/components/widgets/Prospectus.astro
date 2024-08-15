@@ -1,6 +1,6 @@
 ---
 import Note from '~/components/widgets/Note.astro';
-import SponsorshipPackages from './SponsorshipPackages.astro';
+import SponsorshipPackage from './SponsorshipPackage.astro';
 import { Icon } from 'astro-icon/components';
 import Button from '~/components/ui/Button.astro';
 import Image from 'astro/components/Image.astro';
@@ -82,13 +82,13 @@ const sponsorshipPackages = [
   </Note>
 
   <section class="flex p-8 md:p-16 gap-10 w-11/12 max-w-[1300px]">
-    <div class="md:w-1/2">
-      <div class="font-bold text-xl md:mb-16 md:text-4xl md:w-[320px] text-pycon-yellow md:text-white">
+    <div class="md:w-7/12">
+      <div class="font-bold text-xl xl:mb-16 md:text-4xl md:w-[320px] text-pycon-yellow md:text-white">
         <span class="text-pycon-yellow">About</span>
         Pycon Mini Davao <span class="text-pycon-yellow">2024</span>
       </div>
       <Icon name="quote" class="w-[80px] md:w-[100px] h-auto" />
-      <p class="pl-8 md:pl-5 md:text-lg lg:text-2xl font-medium">
+      <p class="pl-8 md:pl-5 md:text-lg lg:text-2xl font-medium leading-6 lg:leading-9">
         PyCon Mini Davao 2024 is a half-day event dedicated to empowering the Python community in Davao City. Under the
         theme <span class="text-pycon-yellow">"Empowering Innovation Through Python" </span>this event will bring
         together Python developers, tech enthusiasts, and professionals to explore the role of Python in driving
@@ -96,7 +96,7 @@ const sponsorshipPackages = [
       </p>
     </div>
     <!-- Right: Image thing -->
-    <Image src={pyconBlueprint} alt="pycon blueprint" class="w-0 sm:w-1/2 h-auto" />
+    <Image src={pyconBlueprint} alt="pycon blueprint" class="w-0 sm:w-5/12 h-auto" />
   </section>
 
   <section class="flex w-full bg-pycon-purple bg-opacity-[0.17]">
@@ -114,14 +114,14 @@ const sponsorshipPackages = [
     <Image src={map} alt="map" class="flex-shrink-0 h-full w-auto sm:h-[200%] relative top-0" />
   </section>
 
-  <section>
+  <section class="p-[1.75rem] md:p-24">
     <h2 class="text-pycon-yellow font-bold text-xl sm:text-4xl">Sponsorship Packages</h2>
-    <p class="font-semibold">
+    <p class="font-semibold mb-12">
       We offer a range of sponsorship packages to meet your business goals. Below are the available sponsorship levels:
     </p>
 
-    <div class="flex justify-between">
-      {sponsorshipPackages.map((sponsorship) => <SponsorshipPackages {...sponsorship} />)}
+    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-10">
+      {sponsorshipPackages.map((sponsorship) => <SponsorshipPackage {...sponsorship} />)}
     </div>
   </section>
 

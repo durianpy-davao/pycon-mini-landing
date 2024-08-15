@@ -13,20 +13,22 @@ const { heading, id, price, benefits } = Astro.props;
 ---
 
 <section class="rounded-2xl px-8 py-4 border border-pycon-purple">
-  <div class="mb-4">
+  <div class="mb-6">
       <h2 class="font-semibold text-3xl inline-block text-transparent bg-clip-text" {...id ? { id } : {}}>{heading}</h2>
       <h4 class="font-semibold text-xl text-pycon-purple">₱{price.toLocaleString()}</h4>
   </div>
   <div>
-    <h3 class="font-medium text-xl">Benefits:</h3>
-    {
-      benefits.map((benefit) => (
-        <span class="flex gap-2 items-start leading-6 mb-2">
-          <Icon name="check" class="flex-shrink-0 w-6 h-6" />
-          <p>{benefit}</p>
-        </span>
-      ))
-    }
+    <h3 class="font-medium text-xl mb-2">Benefits:</h3>
+    <div class="flex flex-col gap-2">
+      {
+        benefits.map((benefit) => (
+          <span class="flex gap-2 items-start leading-6">
+            <Icon name="check" class="flex-shrink-0 w-6 h-6" />
+            <p>{benefit}</p>
+          </span>
+        ))
+      }
+    </div>
   </div>
 </section>
 
