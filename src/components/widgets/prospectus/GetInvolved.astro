@@ -1,0 +1,23 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Button from '~/components/ui/Button.astro';
+
+const { bg = await Astro.slots.render('bg') } = Astro.props;
+---
+
+<WidgetWrapper containerClass="py-8 md:py-20 px-10 gap-5 flex flex-col items-center text-center" bg={bg}>
+  <h2 class="text-pycon-yellow text-4xl font-bold">GET INVOLVED</h2>
+  <p class="md:text-xl">
+    We are open to discussing customized sponsorship packages to best align with your business objectives. If you are
+    interested in sponsoring PyCon Mini Davao 2024 or have any questions, please contact us at durianpy.davao@gmail.com.
+    <br />
+    <br />
+    We look forward to partnering with you to make PyCon Mini Davao 2024 a success!
+  </p>
+  <!-- TODO: add href -->
+  <Button
+    variant="secondary"
+    class="border-pycon-purple text-white py-2 md:text-lg drop-shadow-[0_0_35px_rgba(255,255,255,0.35)]"
+    >Contact Us</Button
+  >
+</WidgetWrapper>
