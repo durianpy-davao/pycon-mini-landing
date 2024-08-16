@@ -20,9 +20,10 @@ const cardContent = [
 
 const ellipse2 = await getImage({ src: _ellipse2, quality: 100 });
 const question = await getImage({ src: _question, quality: 100 });
+const { id } = Astro.props;
 ---
 
-<WidgetWrapper containerClass="flex">
+<WidgetWrapper id={id} containerClass="flex lg:my-10">
   <div class="flex md:flex-row flex-col gap-4 lg:basis-5/6">
     {cardContent.map((content) => <Card {...content} />)}
   </div>
