@@ -9,7 +9,7 @@ import WidgetWrapper from '../ui/WidgetWrapper.astro';
 const pGrid = await getImage({ src: _pGrid, quality: 100 });
 ---
 
-<WidgetWrapper containerClass="mb-10 font-montserrat max-w-7xl !pt-0 !pr-0">
+<WidgetWrapper containerClass="mb-10 font-montserrat max-w-7xl !pt-0 [@media(min-width:419px)]:!pr-0">
   <div class="flex">
     <div class="[@media(min-width:419px)]:basis-[80%] md:basis-2/3">
       <div class="p-8 md:p-20 pt-12 md:pt-16 lg:pt-20 !pr-0">

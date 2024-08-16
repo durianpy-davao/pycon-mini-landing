@@ -1,10 +1,13 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
-import { Image } from 'astro:assets';
+import { getImage, Image } from 'astro:assets';
 import floorGrid from '~/assets/images/code-of-conduct/floor-grid.png';
-import bgGrid from '~/assets/images/code-of-conduct/bg-grid.svg';
 import ContactAndLicense from '~/components/widgets/ContactAndLicense.astro';
+
+import _pGrid from '~/assets/images/code-of-conduct/p-grid.png';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+
+const pGrid = await getImage({ src: _pGrid, quality: 100 });
 
 const metadata = {
   title: 'Pycon Mini Davao 2024 | Code of Conduct',
@@ -51,27 +54,34 @@ const paragraphs = [
 ---
 
 <Layout metadata={metadata}>
-  <div class="font-montserrat">
-    <section>
-      <div class="p-8 md:p-20">
-        <h1 class="font-semibold text-xl sm:text-6xl xl:text-7xl mb-3 sm:mb-6">
-          Code of <span class="text-pycon-yellow">Conduct</span>
-        </h1>
-        <h2 class="font-semibold tracking-widest text-lg sm:text-3xl mb-5 sm:mb-10">PYCON MINI DAVAO 2024</h2>
-
-        {
-          paragraphs.map((paragraph) => (
-            <p class="sm:text-xl mb-5 sm:mb-10 sm:w-[85%] lg:w-[60%]">
-              <span class="text-pycon-yellow">{paragraph.highlight}</span> {paragraph.content}
-            </p>
-          ))
-        }
+  <WidgetWrapper containerClass="mb-10 font-montserrat max-w-7xl lg:!pr-0">
+    <div class="flex">
+      <div class="lg:basis-1/2">
+        <div class="p-8 md:p-20 pt-12 md:pt-16 lg:pt-20 !pr-0">
+          <h1 class="font-semibold text-xl sm:text-6xl xl:text-7xl mb-3 sm:mb-6">
+            Code of <span class="text-pycon-yellow">Conduct</span>
+          </h1>
+          <h2 class="font-semibold tracking-widest text-lg sm:text-3xl mb-5 sm:mb-10">PYCON MINI DAVAO 2024</h2>
+          {
+            paragraphs.map((paragraph) => (
+              <p class="w-full sm:text-xl mb-5 sm:mb-10 lg:pr-10">
+                <span class="text-pycon-yellow">{paragraph.highlight}</span> {paragraph.content}
+              </p>
+            ))
+          }
+        </div>
       </div>
 
-      <div class="bg-gradient-to-t from-[#FEF85D4D] via-[#FEF85D1E] to-[#FFFFFF01]">
-        <Image src={floorGrid} alt="perspective grid" class="w-full z-0" />
+      <div class="hidden lg:block relative lg:basis-1/2">
+        <div class="absolute inset-0 z-0 bg-no-repeat bg-cover bg-left" style=`background-image: url(${pGrid.src})`>
+        </div>
       </div>
-    </section>
-    <ContactAndLicense />
+    </div>
+  </WidgetWrapper>
+
+  <div class="bg-gradient-to-t from-[#FEF85D4D] via-[#FEF85D1E] to-[#FFFFFF01]">
+    <Image src={floorGrid} alt="perspective grid" class="w-full z-0" />
   </div>
+
+  <ContactAndLicense />
 </Layout>
