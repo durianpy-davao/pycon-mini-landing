@@ -1,4 +1,4 @@
-import { getPermalink, getAsset } from './utils/permalinks';
+import { getPermalink } from './utils/permalinks';
 
 export const pyconHeader = {
   links: [
@@ -36,7 +36,7 @@ export const headerData = {
         },
         {
           text: 'Contact Us',
-          href: getPermalink('/#footer'),
+          href: getPermalink('/#contact-us'),
         },
       ],
     },

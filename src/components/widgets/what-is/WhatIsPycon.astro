@@ -1,0 +1,43 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import { getImage } from 'astro:assets';
+import Card from '~/components/widgets/WhatIsCard.astro';
+import _ellipse2 from '~/assets/images/ellipse2.png';
+import _question from '~/assets/images/question.png';
+
+const cardContent = [
+  {
+    heading: 'PyCon',
+    text: 'PyCon, also known as the Python Annual Conference, is the annual event of the global Python community. The original PyCon was formed in North America in 2003, and now there are many other conferences being run in the PyCon spirit around the world.',
+    id: 'pycon',
+  },
+  {
+    heading: 'PyCon Mini Davao',
+    text: "PyCon Mini Davao is a dedicated event in <b>Davao City</b> focused on the discussion and promotion of Python programming. Organized by local enthusiasts, this half-day event highlights Python's role in driving innovation across startups and agencies. We invite Python developers, tech enthusiasts, and beginners alike to join us in sharing knowledge, exchanging ideas, and building connections within the Python community. This year's PyCon Mini Davao emphasizes empowering innovation and fostering collaboration, aiming to inspire attendees and strengthen the Python ecosystem in the region.",
+    id: 'pycon-mini-davao',
+  },
+];
+
+const ellipse2 = await getImage({ src: _ellipse2, quality: 100 });
+const question = await getImage({ src: _question, quality: 100 });
+const { id } = Astro.props;
+---
+
+<WidgetWrapper id={id} containerClass="flex lg:my-10">
+  <div class="flex md:flex-row flex-col gap-4 lg:basis-5/6">
+    {cardContent.map((content) => <Card {...content} />)}
+  </div>
+
+  <div class="hidden lg:block basis-1/6">
+    <div class="absolute inset-0 z-0 bg-no-repeat bg-contain bg-right" style=`background-image: url(${question.src})`>
+    </div>
+  </div>
+
+  <Fragment slot="bg">
+    <div
+      class="hidden lg:block absolute top-5 inset-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat"
+      style={`background-image: url(${ellipse2.src}); background-position: 20% 50%; background-size: auto 500px;`}
+    >
+    </div>
+  </Fragment>
+</WidgetWrapper>

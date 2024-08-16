@@ -109,8 +109,57 @@ export interface Headline {
   title?: string;
   subtitle?: string;
   tagline?: string;
+  content?: string;
   classes?: Record<string, string>;
 }
+
+// export type Content = {
+//   title?: string;
+//   subtitle?: string;
+//   tagline?: string;
+//   content?: string;
+//   callToAction?: {
+//     text: string;
+//     href: string;
+//   };
+//   items?: {
+//     title: string;
+//     description: string;
+//   }[];
+//   columns?: number;
+//   image?: string | object;
+//   isReversed?: boolean;
+//   isAfterContent?: boolean;
+//   id?: string;
+//   isDark?: boolean;
+//   classes?: {
+//     container?: string;
+//     headline?: Record<string, string>;
+//     items?: Record<string, string>;
+//   };
+//   bg?: string;
+// };
+
+export type Features = {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  items: {
+    title: string;
+    description: string;
+  }[];
+  columns?: number;
+  defaultIcon?: string;
+  id?: string;
+  isDark?: boolean;
+  classes?: {
+    container?: string;
+    headline?: Record<string, string>;
+    items?: Record<string, string>;
+  };
+  bg?: string;
+};
+
 
 interface TeamMember {
   name?: string;

@@ -4,8 +4,10 @@ import { getImage } from 'astro:assets';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import { Icon } from 'astro-icon/components';
 import _map from '~/assets/images/prospectus/map.png';
+import _glow from '~/assets/images/prospectus/glow.png';
 
 const map = await getImage({ src: _map, quality: 100, width: 460, height: 481 });
+const glow = await getImage({ src: _glow, quality: 100, width: 460, height: 481 });
 const { bg = await Astro.slots.render('bg') } = Astro.props;
 ---
 
@@ -25,6 +27,11 @@ const { bg = await Astro.slots.render('bg') } = Astro.props;
     <div
       class="absolute inset-0 top-0 z-0 overflow-hidden bg-no-repeat bg-contain bg-right -right-48 md:-right-40 lg:right-0 filter brightness-75 md:brightness-100"
       style={`background-image: url(${map.src});`}
+    >
+    </div>
+    <div
+      class="absolute inset-0 top-0 z-0 overflow-hidden bg-no-repeat bg-contain bg-right -right-48 md:-right-40 lg:right-0 filter brightness-75 md:brightness-100"
+      style={`background-image: url(${glow.src});`}
     >
     </div>
   </div>

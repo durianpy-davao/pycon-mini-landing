@@ -4,10 +4,10 @@ import _contactGrid from '~/assets/images/code-of-conduct/contact-grid.png';
 import WidgetWrapper from '../ui/WidgetWrapper.astro';
 
 const contactGrid = await getImage({ src: _contactGrid, quality: 100 });
+const { id } = Astro.props;
 ---
 
-<WidgetWrapper containerClass="max-w-7xl relative flex justify-center !static">
-  <!-- <section class="flex justify-center p-8 relative top-[5vw] mb-20"> -->
+<WidgetWrapper id={id} containerClass="max-w-7xl relative flex justify-center !static">
   <div
     class="z-[1] bg-pycon-darkPurple grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 border border-white rounded-2xl p-8 md:px-16 max-w-[1300px]"
   >
@@ -34,5 +34,4 @@ const contactGrid = await getImage({ src: _contactGrid, quality: 100 });
     >
     </div>
   </div>
-  <!-- </section> -->
 </WidgetWrapper>

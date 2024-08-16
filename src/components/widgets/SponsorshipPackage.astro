@@ -12,15 +12,19 @@ interface Props {
 const { heading, id, price, benefits } = Astro.props;
 ---
 
-<section class="rounded-2xl relative border border-pycon-purple lg:h-[28rem] overflow-clip">
+<section
+  id={id}
+  class="flex flex-col justify-between rounded-2xl group relative border border-pycon-purple h-60 lg:h-80 overflow-clip"
+>
   <div class="px-8 py-4">
-    <div class="mb-6">
+    <header class="mb-6">
       <h2 class="font-semibold text-3xl inline-block text-transparent bg-clip-text" {...id ? { id } : {}}>{heading}</h2>
       <h4 class="font-semibold text-xl text-pycon-purple">₱{price.toLocaleString()}</h4>
-    </div>
+    </header>
     <div>
+      <!-- Content -->
       <h3 class="font-medium text-xl mb-2">Benefits:</h3>
-      <div class="flex flex-col gap-2">
+      <span class="flex flex-col gap-2">
         {
           benefits.map((benefit) => (
             <span class="flex gap-2 items-start leading-6">
@@ -29,27 +33,58 @@ const { heading, id, price, benefits } = Astro.props;
             </span>
           ))
         }
-      </div>
+      </span>
     </div>
   </div>
 
-  <!-- TODO: make this functional and conditional -->
-  <div class="expand-bg absolute bottom-0 w-full rounded-b-2xl h-[30%] z-10 flex justify-end items-center px-8">
-    <Button variant='secondary' class="h-fit dark:border-white font-bold font-inter py-2 mt-4">Read More</Button>
+  <div class="closed-card-footer w-full rounded-b-2xl flex justify-end items-end py-4 px-8">
+    <Button variant="secondary" type="button" class="h-fit font-bold py-2">Read more</Button>
   </div>
 </section>
 
 <style>
-  #silver {
+  #silver h2 {
     background-image: linear-gradient(to bottom, #c2c2c2, #5c5c5c);
   }
-  #gold {
+  #gold h2 {
     background-image: linear-gradient(to bottom, #fef85d, #989438);
   }
-  #platinum {
+  #platinum h2 {
     background-image: linear-gradient(to bottom, #ffffff, #5c5c5c);
   }
-  .expand-bg {
+  .closed-card-footer {
     background: linear-gradient(180deg, rgba(73, 7, 148, 0) 0%, rgba(73, 7, 148, 0.55) 32.5%, #490794 65%, #490794 87%);
+    @apply absolute bottom-0 h-[50%] z-[5];
+  }
+
+  .expanded-card-footer {
+    @apply h-auto;
   }
 </style>
+
+<script is:inline define:vars={{ id }}>
+  const setupExpandableSection = () => {
+    const section = document.querySelector(`section#${id}`);
+
+    if (!section) return;
+
+    const button = section.querySelector('button');
+
+    if (!button) return;
+
+    button.addEventListener('click', () => {
+      section.classList.toggle('!h-auto');
+      section.classList.toggle('expanded');
+      button.parentElement.classList.toggle('closed-card-footer');
+      button.parentElement.classList.toggle('expanded-card-footer');
+      if (button.parentElement.classList.contains('expanded-card-footer')) {
+        button.textContent = 'Read less';
+      } else {
+        button.textContent = 'Read more';
+      }
+    });
+  };
+
+  document.addEventListener('astro:page-load', setupExpandableSection, { once: true });
+  document.addEventListener('astro:after-swap', setupExpandableSection);
+</script>
