@@ -14,10 +14,8 @@ import pyconHero from '~/assets/images/hero/pycon-newversion 2.png';
 import { Icon } from 'astro-icon/components';
 import gridWarp1 from '~/assets/images/hero/grid-warp-1.png';
 import Schedule from '~/components/widgets/Schedule.astro';
-
-import WhatIsPycon from '~/components/widgets/what-is/WhatIsPycon.astro';
-import questionMark from '~/assets/images/question.png';
-import ellipse2 from '~/assets/images/ellipse2.png';
+import ContactAndLicense from '~/components/widgets/ContactAndLicense.astro';
+import CodeOfConduct from '~/components/widgets/CodeOfConduct.astro';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -34,26 +32,29 @@ const metadata = {
       {
         variant: 'primary',
         text: 'Get Tickets',
-        href: 'https://github.com/onwidget/astrowind',
+        href: 'https://www.techtix.app/pycon-mini-davao-2024/preregister',
         target: '_blank',
-        // icon: 'tabler:download',
       },
       // { text: 'Learn more', href: '#features' },
     ]}
   >
     <Fragment slot="title">
-      <div class="flex justify-center">
-        <Image src={pyconHero} width={600} height={289} alt="Pycon Hero" />
+      <div class="flex w-full pb-6 justify-center drop-shadow-[0_0_250px_rgba(0,0,0,1)]">
+        <Image class="md:w-[75%] max-h-[70vh] md:h-auto" src={pyconHero} alt="Pycon Hero" />
       </div>
     </Fragment>
 
     <Fragment slot="subtitle">
-      <div class="flex flex-col text-lg font-bold md:flex-row md:text-2xl md:justify-between">
+      <div class="mt-[6vh] mb-16 md:mt-10 flex flex-col text-lg font-bold md:flex-row md:text-2xl md:justify-between">
         <span>September 26, 2024</span>
-        <span class="text-pycon-yellow flex items-center justify-center gap-2">
+        <a
+          href="https://maps.app.goo.gl/NwnFYbzvmCDVih9r8"
+          target="_blank"
+          class="text-pycon-yellow flex items-center justify-center gap-2 hover:underline"
+        >
           <Icon name="tabler:map-pin" />
           Ateneo de Davao University
-        </span>
+        </a>
       </div>
     </Fragment>
 
@@ -62,82 +63,20 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
-
-  <WhatIsPycon>
-    <Fragment slot="bg">
-      <div
-        class="hidden xl:block absolute top-0 inset-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat bg-contain bg-right"
-        style={`background-image: url(${ellipse2.src}); background-position: 20% 0%; background-size: 40%;`}
-      >
-      </div>
-      <div
-        class="hidden xl:block absolute inset-0 top-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat bg-contain bg-right"
-        style={`background-image: url(${questionMark.src}); background-position: 90% 89%; background-size: 25%`}
-      >
-      </div>
-    </Fragment>
-  </WhatIsPycon>
-
-  <!-- <Note /> -->
-
-  <!-- Features Widget *************** -->
-
-  <!-- <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022."
-    items={[
-      {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
-      },
-      {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
-      },
-    ]}
-  /> -->
-
   <!-- Schedule Widget **************** -->
   <Schedule id="schedule" title="Schedule">
     <Fragment slot="bg">
-      <div class="absolute inset-0" style="background: linear-gradient(180deg, #2A0455 70%, #3D3C19 100%);
-"></div>
+      <div class="absolute inset-0" style="background: linear-gradient(180deg, #2A0455 70%, #3D3C19 100%);"></div>
     </Fragment>
   </Schedule>
 
-  <!-- Content Widget **************** -->
-  <!-- <Content
+  <!-- Code of Conduct Widget ******** -->
+  <CodeOfConduct />
+  <ContactAndLicense />
+</Layout>
+
+<!-- Content Widget **************** -->
+<!-- <Content
     isReversed
     tagline="Inside template"
     title="AstroWind's Blueprint: Fun Meets Functionality!"
@@ -173,9 +112,9 @@ const metadata = {
     </Fragment>
   </Content> -->
 
-  <!-- Content Widget **************** -->
+<!-- Content Widget **************** -->
 
-  <!-- <Content
+<!-- <Content
     isAfterContent
     items={[
       {
@@ -210,9 +149,9 @@ const metadata = {
     </Fragment>
   </Content> -->
 
-  <!-- Content Widget **************** -->
+<!-- Content Widget **************** -->
 
-  <!-- <Content
+<!-- <Content
     isReversed
     isAfterContent
     items={[
@@ -248,9 +187,9 @@ const metadata = {
     </Fragment>
   </Content> -->
 
-  <!-- Steps Widget ****************** -->
+<!-- Steps Widget ****************** -->
 
-  <!-- <Steps
+<!-- <Steps
     title="Get your dream website up and running in no time with AstroWind."
     items={[
       {
@@ -282,9 +221,9 @@ const metadata = {
     }}
   /> -->
 
-  <!-- Features2 Widget ************** -->
+<!-- Features2 Widget ************** -->
 
-  <!-- <Features2
+<!-- <Features2
     title="Most used widgets"
     subtitle="Provides frequently used components for building websites using Tailwind CSS"
     tagline="Components"
@@ -346,9 +285,9 @@ const metadata = {
     </Fragment>
   </Features2> -->
 
-  <!-- HighlightedPosts Widget ******* -->
+<!-- HighlightedPosts Widget ******* -->
 
-  <!-- <BlogLatestPosts
+<!-- <BlogLatestPosts
     title="Find out more content in our Blog"
     information={`The blog is used to display AstroWind documentation.
                         Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
@@ -356,9 +295,9 @@ const metadata = {
                 `}
   /> -->
 
-  <!-- FAQs Widget ******************* -->
+<!-- FAQs Widget ******************* -->
 
-  <!-- <FAQs
+<!-- <FAQs
     title="Frequently Asked Questions"
     subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
     tagline="FAQs"
@@ -397,9 +336,9 @@ const metadata = {
     ]}
   /> -->
 
-  <!-- Stats Widget ****************** -->
+<!-- Stats Widget ****************** -->
 
-  <!-- <Stats
+<!-- <Stats
     stats={[
       { title: 'Downloads', amount: '132K' },
       { title: 'Stars', amount: '24.8K' },
@@ -408,9 +347,9 @@ const metadata = {
     ]}
   /> -->
 
-  <!-- CallToAction Widget *********** -->
+<!-- CallToAction Widget *********** -->
 
-  <!-- <CallToAction
+<!-- <CallToAction
     actions={[
       {
         variant: 'primary',
@@ -430,4 +369,3 @@ const metadata = {
       waste more time! :P
     </Fragment>
   </CallToAction> -->
-</Layout>

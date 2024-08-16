@@ -1,7 +1,87 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { getImage, Image } from 'astro:assets';
+import floorGrid from '~/assets/images/code-of-conduct/floor-grid.png';
+import ContactAndLicense from '~/components/widgets/ContactAndLicense.astro';
+
+import _pGrid from '~/assets/images/code-of-conduct/p-grid.png';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+
+const pGrid = await getImage({ src: _pGrid, quality: 100 });
+
+const metadata = {
+  title: 'Pycon Mini Davao 2024 | Code of Conduct',
+};
+
+const paragraphs = [
+  {
+    highlight: 'PyCon Mini Davao',
+    content:
+      'is a community event dedicated to promoting collaboration, learning, and innovation within the Python community. We are committed to providing a welcoming, safe, and inclusive environment for all participants. All attendees, speakers, exhibitors, organizers, and volunteers at PyCon Mini Davao are required to adhere to the following Code of Conduct, which will be enforced throughout the event.',
+  },
+
+  {
+    highlight: 'Harassment, in any form, will not be tolerated.',
+    content:
+      'Harassment includes, but is not limited to, offensive verbal comments related to gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, religion, or status. This also includes the display of sexual images in public spaces, deliberate intimidation, stalking, following, harassing photography or recording, sustained disruption of talks or other events, inappropriate physical contact, and unwelcome sexual attention.',
+  },
+
+  {
+    highlight: 'All participants',
+    content:
+      'are expected to avoid using language or behavior that might be offensive or exclusionary. This includes sexist, racist, or other discriminatory jokes, excessive swearing, and any conduct that may create a hostile environment any conduct that may create a hostile environment.',
+  },
+
+  {
+    highlight: 'Exhibitors and sponsors must also adhere to this policy.',
+    content:
+      'This includes refraining from the use of sexualized images, activities, or materials in their displays, and ensuring that all booth staff and volunteers maintain a professional and inclusive demeanor.',
+  },
+
+  {
+    highlight: 'If a participant',
+    content:
+      'engages in harassing behavior, PyCon Mini Davao organizers may take any action they deem appropriate, including warning the offender or expelling them from the event without a refund.',
+  },
+
+  {
+    highlight:
+      'If you are being harassed, notice that someone else is being harassed, or have any other concerns, please contact a member of the event staff immediately.',
+    content:
+      'Staff members can be identified by their official event badges. We will be happy to help you contact venue security, local law enforcement, or otherwise assist you in feeling safe during the event.',
+  },
+];
 ---
 
-<Layout>
-  <h1>Code of Conduct</h1>
+<Layout metadata={metadata}>
+  <WidgetWrapper containerClass="mb-10 font-montserrat max-w-7xl lg:!pr-0">
+    <div class="flex">
+      <div class="lg:basis-1/2">
+        <div class="p-8 md:p-20 pt-12 md:pt-16 lg:pt-20 !pr-0">
+          <h1 class="font-semibold text-xl sm:text-6xl xl:text-7xl mb-3 sm:mb-6">
+            Code of <span class="text-pycon-yellow">Conduct</span>
+          </h1>
+          <h2 class="font-semibold tracking-widest text-lg sm:text-3xl mb-5 sm:mb-10">PYCON MINI DAVAO 2024</h2>
+          {
+            paragraphs.map((paragraph) => (
+              <p class="w-full sm:text-xl mb-5 sm:mb-10 lg:pr-10">
+                <span class="text-pycon-yellow">{paragraph.highlight}</span> {paragraph.content}
+              </p>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="hidden lg:block relative lg:basis-1/2">
+        <div class="absolute inset-0 z-0 bg-no-repeat bg-cover bg-left" style=`background-image: url(${pGrid.src})`>
+        </div>
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <div class="bg-gradient-to-t from-[#FEF85D4D] via-[#FEF85D1E] to-[#FFFFFF01]">
+    <Image src={floorGrid} alt="perspective grid" class="w-full z-0" />
+  </div>
+
+  <ContactAndLicense />
 </Layout>

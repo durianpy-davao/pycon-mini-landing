@@ -23,7 +23,7 @@
   }
 
   .btn-primary {
-    @apply btn font-semibold bg-white border-white text-pycon-darkPurple hover:bg-white hover:text-pycon-purple hover:border-white;
+    @apply btn font-semibold bg-white border-white text-pycon-darkPurple dark:text-pycon-darkPurple hover:bg-white hover:text-pycon-purple hover:border-white dark:hover:bg-white dark:hover:text-pycon-purple dark:hover:border-white drop-shadow-[0_0_2rem_rgba(174,120,120,0.49)];
   }
 
   .btn-secondary {
