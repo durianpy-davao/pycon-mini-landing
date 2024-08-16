@@ -20,6 +20,7 @@ module.exports = {
       fontFamily: {
         montserrat: 'var(--font-montserrat)',
         blippo: 'var(--font-blippo)',
+        inter: 'var(--font-inter)',
       },
     },
   },

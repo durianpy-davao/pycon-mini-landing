@@ -16,7 +16,7 @@ export const headerData = {
       links: [
         {
           text: 'Get Tickets',
-          href: getPermalink('#hero'),
+          href: getPermalink('/#hero'),
         },
         {
           text: 'What is PyCon?',
@@ -28,11 +28,11 @@ export const headerData = {
         },
         {
           text: 'Code of Conduct',
-          href: getPermalink('#code-of-conduct'),
+          href: getPermalink('/code-of-conduct'),
         },
         {
           text: 'Sponsorship Prospectus',
-          href: getPermalink('#prospectus'),
+          href: getPermalink('/prospectus'),
         },
         {
           text: 'Contact Us',
