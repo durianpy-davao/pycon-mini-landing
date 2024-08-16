@@ -19,7 +19,7 @@ const { bg = await Astro.slots.render('bg') } = Astro.props;
 ---
 
 <WidgetWrapper containerClass="p-[1.75rem] md:p-2 flex overflow-visible" bg={bg}>
-  <section class="flex md:flex-row flex-col gap-4 basis-[75%]">
+  <section class="flex md:flex-row flex-col gap-4 md:basis-[75%]">
     {cardContent.map((content) => <Card {...content} />)}
   </section>
 </WidgetWrapper>
