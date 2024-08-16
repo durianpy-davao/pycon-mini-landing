@@ -29,8 +29,16 @@ const { socialLinks = [], theme = 'light' } = Astro.props;
 ---
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative not-prose']}>
-  <Image src={gridBg} alt="Grid background" class="h-[85%] min-w-full absolute bottom-0 max-w-full z-[1]" />
-  <Image src={ellipse} alt="Ellipse background" class="h-[20%] min-w-full absolute bottom-0 max-w-full bg-bottom z-0" />
+  <div
+    class="absolute inset-0 bottom-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat bg-cover bg-right"
+    style={`background-image: url(${gridBg.src}); background-position: 0% 100%;`}
+  >
+  </div>
+  <div
+    class="absolute inset-0 bottom-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat bg-right"
+    style={`background-image: url(${ellipse.src}); background-position: 50% 100%; background-size: 90% 30%;`}
+  >
+  </div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 z-[2]">
     <div class="flex flex-col items-center py-6 md:py-8">
       <Image src={pyconFooter} alt="White Pycon Mini logo" class="mix-blend-luminosity mb-12 z-[2]" />
