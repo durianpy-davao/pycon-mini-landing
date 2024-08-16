@@ -13,6 +13,7 @@ import { Image } from 'astro:assets';
 import pyconHero from '~/assets/images/hero/pycon-newversion 2.png';
 import { Icon } from 'astro-icon/components';
 import gridWarp1 from '~/assets/images/hero/grid-warp-1.png';
+import WhatIsPycon from '~/components/widgets/what-is/WhatIsPycon.astro';
 import Schedule from '~/components/widgets/Schedule.astro';
 import ContactAndLicense from '~/components/widgets/ContactAndLicense.astro';
 import CodeOfConduct from '~/components/widgets/CodeOfConduct.astro';
@@ -62,6 +63,59 @@ const metadata = {
       <Image class="absolute bottom-0 w-full" src={gridWarp1} alt="gridWarp1" quality={100} />
     </Fragment>
   </Hero>
+
+  <!-- Note Widget ******************* -->
+
+  <WhatIsPycon />
+
+  <!-- <Note /> -->
+
+  <!-- Features Widget *************** -->
+
+  <!-- <Features
+    id="features"
+    tagline="Features"
+    title="What you get with AstroWind"
+    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022."
+    items={[
+      {
+        title: 'Astro + Tailwind CSS Integration',
+        description:
+          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
+        icon: 'tabler:brand-tailwind',
+      },
+      {
+        title: 'Ready-to-use Components',
+        description:
+          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
+        icon: 'tabler:components',
+      },
+      {
+        title: 'Best Practices',
+        description:
+          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
+        icon: 'tabler:list-check',
+      },
+      {
+        title: 'Excellent Page Speed',
+        description:
+          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Search Engine Optimization (SEO)',
+        description:
+          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
+        icon: 'tabler:arrows-right-left',
+      },
+      {
+        title: 'Open to new ideas and contributions',
+        description:
+          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
+        icon: 'tabler:bulb',
+      },
+    ]}
+  /> -->
 
   <!-- Schedule Widget **************** -->
   <Schedule id="schedule" title="Schedule">

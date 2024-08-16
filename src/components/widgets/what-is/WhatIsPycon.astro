@@ -1,6 +1,9 @@
 ---
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import { getImage } from 'astro:assets';
 import Card from '~/components/widgets/WhatIsCard.astro';
+import _ellipse2 from '~/assets/images/ellipse2.png';
+import _question from '~/assets/images/question.png';
 
 const cardContent = [
   {
@@ -15,11 +18,25 @@ const cardContent = [
   },
 ];
 
-const { bg = await Astro.slots.render('bg') } = Astro.props;
+const ellipse2 = await getImage({ src: _ellipse2, quality: 100 });
+const question = await getImage({ src: _question, quality: 100 });
 ---
 
-<WidgetWrapper containerClass="p-[1.75rem] md:p-2 flex overflow-visible" bg={bg}>
-  <section class="flex md:flex-row flex-col gap-4 md:basis-[75%]">
+<WidgetWrapper containerClass="flex">
+  <div class="flex md:flex-row flex-col gap-4 lg:basis-5/6">
     {cardContent.map((content) => <Card {...content} />)}
-  </section>
+  </div>
+
+  <div class="hidden lg:block basis-1/6">
+    <div class="absolute inset-0 z-0 bg-no-repeat bg-contain bg-right" style=`background-image: url(${question.src})`>
+    </div>
+  </div>
+
+  <Fragment slot="bg">
+    <div
+      class="hidden lg:block absolute top-5 inset-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat"
+      style={`background-image: url(${ellipse2.src}); background-position: 20% 50%; background-size: auto 500px;`}
+    >
+    </div>
+  </Fragment>
 </WidgetWrapper>
