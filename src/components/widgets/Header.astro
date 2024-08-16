@@ -35,7 +35,7 @@ export interface Props {
 const {
   id = 'header',
   links = [],
-  isSticky = false,
+  isSticky = true,
   isDark = false,
   isFullWidth = false,
   position = 'center',
@@ -51,6 +51,14 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
+  style="background: conic-gradient(
+      from 90deg at 3.26% 50.72%,
+      #2a0455 -2.13deg,
+      #3a3921 119.88deg,
+      #2a0455 357.87deg,
+      #3a3921 479.88deg
+    );
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);"
 >
   <div class="absolute inset-0"></div>
   <div
@@ -125,16 +133,3 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </nav>
   </div>
 </header>
-
-<style>
-  #header {
-    background: conic-gradient(
-      from 90deg at 3.26% 50.72%,
-      #2a0455 -2.13deg,
-      #3a3921 119.88deg,
-      #2a0455 357.87deg,
-      #3a3921 479.88deg
-    );
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
-  }
-</style>
