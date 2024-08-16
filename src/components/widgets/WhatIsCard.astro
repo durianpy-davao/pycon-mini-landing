@@ -1,0 +1,77 @@
+---
+import Button from '../ui/Button.astro';
+
+interface Props {
+  heading: string;
+  text: string;
+  id: string;
+}
+
+const { heading, text, id } = Astro.props;
+---
+
+<section
+  id={id}
+  class="flex flex-col gap-5 p-5 rounded-xl bg-gradient-to-t from-[#490794] via-[#3C067A] to-[#2E045D] border-t-2 border-[#490794] z-[1]"
+>
+  <div class="p-3">
+    <header class="mb-6">
+      <h2 class="font-semibold text-3xl inline-block text-white bg-clip-text">
+        What is <br /><span class="text-pycon-yellow">{heading}</span>?
+      </h2>
+    </header>
+    <div class="text-sm pb-10 pr-5">
+      <Fragment set:html={text} />
+    </div>
+  </div>
+
+  {
+    id === 'pycon-mini-davao' ? (
+      <div class:list="closed-card-footer w-full rounded-b-2xl flex justify-end items-end py-4 px-8">
+        <Button variant="secondary" type="button" class="h-fit font-bold py-2">
+          Read more
+        </Button>
+      </div>
+    ) : (
+      <Fragment />
+    )
+  }
+</section>
+
+<style>
+  .closed-card-footer {
+    background: linear-gradient(180deg, rgba(73, 7, 148, 0) 0%, rgba(73, 7, 148, 0.55) 32.5%, #490794 65%, #490794 87%);
+    @apply absolute bottom-0 h-[50%] z-[5];
+  }
+
+  .expanded-card-footer {
+    @apply h-auto;
+  }
+</style>
+
+<script define:vars={{ id }}>
+  const setupExpandableSection = () => {
+    const section = document.querySelector(`section#${id}`);
+
+    if (!section) return;
+
+    const button = section.querySelector('button');
+
+    if (!button) return;
+
+    button.addEventListener('click', () => {
+      section.classList.toggle('!h-auto');
+      section.classList.toggle('expanded');
+      button.parentElement.classList.toggle('closed-card-footer');
+      button.parentElement.classList.toggle('expanded-card-footer');
+      if (button.parentElement.classList.contains('expanded-card-footer')) {
+        button.textContent = 'Read less';
+      } else {
+        button.textContent = 'Read more';
+      }
+    });
+  };
+
+  document.addEventListener('astro:page-load', setupExpandableSection, { once: true });
+  document.addEventListener('astro:after-swap', setupExpandableSection);
+</script>
