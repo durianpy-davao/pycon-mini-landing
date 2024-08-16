@@ -62,7 +62,7 @@ const { heading, id, price, benefits } = Astro.props;
   }
 </style>
 
-<script define:vars={{ id }}>
+<script is:inline define:vars={{ id }}>
   const setupExpandableSection = () => {
     const section = document.querySelector(`section#${id}`);
 
