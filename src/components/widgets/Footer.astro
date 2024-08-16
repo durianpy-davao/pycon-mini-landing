@@ -1,8 +1,5 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { SITE } from 'astrowind:config';
-import { getHomePermalink } from '~/utils/permalinks';
-
 import { Image } from 'astro:assets';
 import pyconFooter from '~/assets/images/footer.png';
 import gridBg from '~/assets/images/grid.png';
@@ -13,11 +10,6 @@ interface Link {
   href?: string;
   ariaLabel?: string;
   icon?: string;
-}
-
-interface Links {
-  title?: string;
-  links: Array<Link>;
 }
 
 export interface Props {

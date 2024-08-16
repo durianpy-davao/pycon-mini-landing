@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { metadata } from './prospectusContent.js';
+import { metadata } from '~/components/widgets/prospectus/prospectusContent';
 import { getImage } from 'astro:assets';
 import Header from '~/components/widgets/prospectus/Header.astro';
 import AboutPycon from '~/components/widgets/prospectus/AboutPycon.astro';
@@ -31,6 +31,7 @@ const grid = await getImage({ src: _grid, quality: 100, width: 1528, height: 102
   </div>
 
   <!-- TODO: Add functionality to Contact Us -->
+
   <GetInvolved>
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-pycon-purple bg-opacity-[0.17]"></div>
