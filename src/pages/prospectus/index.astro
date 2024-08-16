@@ -1,0 +1,39 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { metadata } from './prospectusContent.js';
+import { getImage } from 'astro:assets';
+import Header from '~/components/widgets/prospectus/Header.astro';
+import AboutPycon from '~/components/widgets/prospectus/AboutPycon.astro';
+import EventDetails from '~/components/widgets/prospectus/EventDetails.astro';
+import WhySponsor from '~/components/widgets/prospectus/WhySponsor.astro';
+import SponsorPackages from '~/components/widgets/prospectus/SponsorPackages.astro';
+import GetInvolved from '~/components/widgets/prospectus/GetInvolved.astro';
+import _grid from '~/assets/images/prospectus/grid.png';
+
+const grid = await getImage({ src: _grid, quality: 100, width: 1528, height: 1024 });
+---
+
+<Layout metadata={metadata}>
+  <div class="relative">
+    <Header />
+    <AboutPycon />
+    <div class="absolute inset-0 -z-[1] bg-cover" style=`background: url(${grid.src})`></div>
+  </div>
+  <div class="relative">
+    <EventDetails>
+      <Fragment slot="bg">
+        <div class="absolute inset-0 !z-0 bg-pycon-purple bg-opacity-[0.17]"></div>
+      </Fragment>
+    </EventDetails>
+    <WhySponsor />
+    <SponsorPackages />
+    <div class="absolute inset-0 -z-[1] bg-cover" style=`background: url(${grid.src})`></div>
+  </div>
+
+  <!-- TODO: Add functionality to Contact Us -->
+  <GetInvolved>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-pycon-purple bg-opacity-[0.17]"></div>
+    </Fragment>
+  </GetInvolved>
+</Layout>

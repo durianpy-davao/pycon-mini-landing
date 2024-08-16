@@ -1,0 +1,26 @@
+---
+import Note from '~/components/widgets/Note.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+---
+
+<WidgetWrapper containerClass={`max-w-7xl relative mx-auto !pb-0`}>
+  <div
+    class="flex flex-col text-center"
+    style=" background: linear-gradient(178.99deg, #FEF85D 15.7%, #CEC94C 76.24%, #989438 82.78%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    "
+  >
+    <span class="font-semibold text-xl sm:text-3xl">PYCON MINI DAVAO 2024</span>
+    <span class="font-bold text-2xl sm:text-[2.4rem]">SPONSORSHIP PROSPECTUS</span>
+  </div>
+
+  <Note class="my-10">
+    <p slot="content" class="text-left text-wrap">
+      For sponsorship inquiries, please reach out to <strong>Arnel Jan Sarmiento</strong>, Community Lead of DurianPy
+      Davao Python User Group, at <strong>durianpy.davao@gmail.com</strong>.
+    </p>
+  </Note>
+</WidgetWrapper>
