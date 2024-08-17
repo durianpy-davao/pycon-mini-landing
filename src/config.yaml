@@ -11,7 +11,7 @@ metadata:
   title:
     default: Pycon Mini Davao
     template: '%s — Pycon Mini Davao'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+  description: 'PyConf Mini Davao is a half-day afternoon event dedicated to expanding and strengthening the Python community in Davao City under the theme "Empowering Innovation Through Python." The event will feature three keynote speakers and a series of lightning talks focused on exploring how Python technologies are driving innovation across local tech startups and agencies. Our goal is to foster a collaborative environment that provides a platform for knowledge-sharing, community-building, and the growth of Python enthusiasts, especially beginners.'
   robots:
     index: true
     follow: true
@@ -30,38 +30,6 @@ metadata:
 i18n:
   language: en
   textDirection: ltr
-
-apps:
-  blog:
-    isEnabled: true
-    postsPerPage: 6
-
-    post:
-      isEnabled: true
-      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
-      robots:
-        index: true
-
-    list:
-      isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
-      robots:
-        index: true
-
-    category:
-      isEnabled: true
-      pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
-      robots:
-        index: true
-
-    tag:
-      isEnabled: true
-      pathname: 'tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
-      robots:
-        index: false
-
-    isRelatedPostsEnabled: true
-    relatedPostsCount: 4
 
 analytics:
   vendors:

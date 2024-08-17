@@ -2,7 +2,6 @@
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import { sponsorshipPackages } from './prospectusContent.js';
 import SponsorshipPackage from '~/components/widgets/SponsorshipPackage.astro';
-// TODO: Add read more functionality
 ---
 
 <WidgetWrapper containerClass="p-[1.75rem] md:p-24">
@@ -11,7 +10,7 @@ import SponsorshipPackage from '~/components/widgets/SponsorshipPackage.astro';
     We offer a range of sponsorship packages to meet your business goals. Below are the available sponsorship levels:
   </p>
 
-  <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-10">
+  <div class="grid grid-cols-1 xl:grid-cols-3 gap-10">
     {sponsorshipPackages.map((sponsorship) => <SponsorshipPackage {...sponsorship} />)}
   </div>
 </WidgetWrapper>

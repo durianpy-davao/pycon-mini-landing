@@ -1,0 +1,25 @@
+---
+interface Props {
+  heading: string;
+  text: string;
+  id: string;
+}
+
+const { heading, text, id } = Astro.props;
+---
+
+<section
+  id={id}
+  class="flex flex-col gap-5 p-5 rounded-xl bg-gradient-to-t from-[#490794] via-[#3C067A] to-[#2E045D] border-t-2 border-[#490794] z-[1]"
+>
+  <div class="p-3">
+    <header class="mb-6">
+      <h2 class="font-semibold text-3xl inline-block text-white bg-clip-text">
+        What is <br /><span class="text-pycon-yellow">{heading}</span>?
+      </h2>
+    </header>
+    <div class="text-sm">
+      <Fragment set:html={text} />
+    </div>
+  </div>
+</section>

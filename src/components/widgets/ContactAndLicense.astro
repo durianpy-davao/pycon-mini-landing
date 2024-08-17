@@ -1,0 +1,37 @@
+---
+import { getImage } from 'astro:assets';
+import _contactGrid from '~/assets/images/code-of-conduct/contact-grid.png';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+
+const contactGrid = await getImage({ src: _contactGrid, quality: 100 });
+const { id } = Astro.props;
+---
+
+<WidgetWrapper id={id} containerClass="max-w-7xl relative flex justify-center !static">
+  <div
+    class="z-[1] bg-pycon-darkPurple grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 border border-white rounded-2xl p-8 md:px-16 max-w-[1300px]"
+  >
+    <div>
+      <h3 class="font-medium text-lg sm:text-4xl mb-4">Contact <span class="text-pycon-yellow">Information</span></h3>
+      <p class="sm:text-xl">
+        If you believe someone is violating the Code of Conduct or if you have any other concerns, please reach out to a
+        member of the PyCon Mini Davao Code of Conduct workgroup immediately. You can contact them via email at
+        durianpy.davao@gmail.com.
+      </p>
+    </div>
+    <div>
+      <h3 class="font-medium text-lg sm:text-4xl mb-4 text-pycon-yellow">License</h3>
+      <p class="sm:text-xl">
+        This Code of Conduct is adapted from the PyCon US 2015 Code of Conduct and is licensed under a Creative Commons
+        Attribution 3.0 Unported License.
+      </p>
+    </div>
+  </div>
+  <div class="absolute flex items-end inset-0 z-0 overflow-hidden mt-32">
+    <div
+      class="h-[100%] w-[60%] z-0 bg-contain bg-left-bottom bg-no-repeat"
+      style=`background-image: url(${contactGrid.src})`
+    >
+    </div>
+  </div>
+</WidgetWrapper>
