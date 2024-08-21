@@ -83,6 +83,6 @@ export const sponsorshipPackages = [
 ];
 
 export const metadata = {
-  title: 'PyCon Mini Davao 2024 | Sponsorship Prospectus',
-  description: 'Learn about the sponsorship opportunities available for PyCon Mini Davao 2024.',
+  title: 'PyConf Mini Davao 2024 | Sponsorship Prospectus',
+  description: 'Learn about the sponsorship opportunities available for PyConf Mini Davao 2024.',
 };
