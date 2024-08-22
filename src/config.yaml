@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Pycon Mini Davao
-    template: '%s — Pycon Mini Davao'
+    default: Pyconf Mini Davao
+    template: '%s — Pyconf Mini Davao'
   description: 'PyConf Mini Davao is a half-day afternoon event dedicated to expanding and strengthening the Python community in Davao City under the theme "Empowering Innovation Through Python." The event will feature three keynote speakers and a series of lightning talks focused on exploring how Python technologies are driving innovation across local tech startups and agencies. Our goal is to foster a collaborative environment that provides a platform for knowledge-sharing, community-building, and the growth of Python enthusiasts, especially beginners.'
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: Pycon Mini Davao
+    site_name: Pyconf Mini Davao
     images:
       - url: '~/assets/images/default.png'
         width: 1200

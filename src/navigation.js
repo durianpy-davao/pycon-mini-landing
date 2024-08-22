@@ -16,7 +16,7 @@ export const headerData = {
       links: [
         {
           text: 'Get Tickets',
-          href: getPermalink('/#hero'),
+          href: 'https://www.techtix.app/pycon-mini-davao-2024/preregister',
         },
         {
           text: 'What is PyCon?',

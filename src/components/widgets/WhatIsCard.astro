@@ -18,7 +18,7 @@ const { heading, text, id } = Astro.props;
         What is <br /><span class="text-pycon-yellow">{heading}</span>?
       </h2>
     </header>
-    <div class="text-sm">
+    <div>
       <Fragment set:html={text} />
     </div>
   </div>
