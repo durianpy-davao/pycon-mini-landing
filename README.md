@@ -1,4 +1,4 @@
-# Pycon Mini Davao Landing Page
+# Pyconf Mini Davao Landing Page
 
 ## Pre-requisites:
 

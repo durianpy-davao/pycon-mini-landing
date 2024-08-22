@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
-import pyconFooter from '~/assets/images/footer.png';
+import pyconFooter from '~/assets/images/logo.png';
 import gridBg from '~/assets/images/grid.png';
 import ellipse from '~/assets/images/ellipse.png';
 
@@ -32,8 +32,14 @@ const { socialLinks = [], theme = 'light' } = Astro.props;
   >
   </div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 z-[2]">
-    <div class="flex flex-col items-center py-6 md:py-8">
-      <Image src={pyconFooter} alt="White Pycon Mini logo" class="mix-blend-luminosity mb-12 z-[2]" />
+    <div class="flex flex-col items-center py-4 md:py-8">
+      <Image
+        src={pyconFooter}
+        height={700}
+        width={800}
+        alt="White Pycon Mini logo"
+        class="mix-blend-luminosity mb-4 z-[2]"
+      />
       <a
         class="text-center font-montserrat text-pycon-yellow text-5xl mb-10 z-[2]"
         href="https://www.techtix.app/pycon-mini-davao-2024/preregister"
