@@ -1,7 +1,13 @@
 ---
+type Speaker = {
+  name: string;
+  title?: string;
+};
+
 type Activity = {
   title: string;
   description?: string;
+  speaker?: Speaker;
   timeStart: number;
   timeEnd: number;
 };
@@ -53,11 +59,14 @@ const {
   ],
 } = Astro.props as Props;
 
-// Reusable function to convert time to total minutes since start of day
-const convertTimeToMinutes = (time: number) => Math.floor(time / 100) * 60 + (time % 100);
+const MINUTES_PER_ROW_SPAN = 5
+const HOUR_IN_MINUTE = 60
 
+const convertTimeToMinutes = (time: number) => Math.floor(time / 100) * HOUR_IN_MINUTE + (time % 100);
 const totalProgramMinutes = convertTimeToMinutes(programEnd) - convertTimeToMinutes(programStart);
 const intervalsCount = totalProgramMinutes / programScheduleInterval + 1;
+const totalRows = totalProgramMinutes / MINUTES_PER_ROW_SPAN;
+const intervalSpan = (totalRows / (intervalsCount - 1)); // -1 to exlude last interval
 
 const convertTo12HourFormat = (time: number) => {
   const hour = Math.floor(time / 100);
@@ -65,7 +74,7 @@ const convertTo12HourFormat = (time: number) => {
   const formattedHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
   const formattedMinute = minute < 10 ? `0${minute}` : minute;
 
-  if (!(programScheduleInterval % 60)) {
+  if (!(programScheduleInterval % HOUR_IN_MINUTE)) {
     return `${formattedHour}`;
   }
 
@@ -75,8 +84,8 @@ const convertTo12HourFormat = (time: number) => {
 const generateTimeSlots = (start: number, interval: number, count: number) =>
   Array.from({ length: count }, (_, i) => {
     const totalMinutes = convertTimeToMinutes(start) + i * interval;
-    const nextHour = Math.floor(totalMinutes / 60);
-    const nextMinute = totalMinutes % 60;
+    const nextHour = Math.floor(totalMinutes / HOUR_IN_MINUTE);
+    const nextMinute = totalMinutes % HOUR_IN_MINUTE;
     return nextHour * 100 + nextMinute;
   });
 
@@ -94,54 +103,47 @@ const formatTime = (time: number) => {
   return `${hours}:${minutes} ${period}`;
 };
 
-const getActivityRow = (activity: { timeStart: number; timeEnd: number }) => {
+const getActivitySpan = (activity: Activity) => {
   const startMinutes = convertTimeToMinutes(activity.timeStart);
   const endMinutes = convertTimeToMinutes(activity.timeEnd);
-
-  // Total duration in minutes
   const activityDuration = endMinutes - startMinutes;
 
-  // Calculate rowSpan by dividing duration by the interval
-  const rowSpan = activityDuration / programScheduleInterval;
-
-  // Find the index of the closest start time in the generated time slots
-  const startRowIndex = generatedTime.findIndex((time) => convertTimeToMinutes(time) >= startMinutes);
-
-  // Adjust for any fractional part of the start time
-  const closestTimeMinutes = convertTimeToMinutes(generatedTime[startRowIndex]);
-  const fractionalPart = (startMinutes - closestTimeMinutes) / programScheduleInterval;
-
-  const startRow = startRowIndex + fractionalPart;
-
-  return { startRow, rowSpan };
+  const rowSpan =  activityDuration / MINUTES_PER_ROW_SPAN
+  return { rowSpan };
 };
+const getActivityStyle = (span: number) => `grid-row: span ${span} / span ${span}`;
+const timeStyle = `grid-row: span ${intervalSpan}/ span ${intervalSpan}`;
+
 ---
 
 <section class="flex w-full overflow-x-auto xl:basis-2/3 relative z-[1]">
-  <div class="flex w-full min-w-[424px]" role="table">
-    <div class="flex flex-col">
+  <div class="grid w-full min-w-[424px]" role="table" style={`minmax(0, 1fr)); grid-template-columns: 10% 90%;`}>
+    <div class="grid col-span-1" style={`grid-template-rows: repeat(${totalRows}, minmax(0, 1fr));`}>
       {
         timeWithPostFix.map(({ hour, postfix }) => (
-          <div class="flex flex-col items-center px-2 py-10 gap-1">
+          <div class="flex flex-col items-center px-2" style={timeStyle}>
             <span class="text-3xl font-black">{hour}</span>
             <span class="text-lg">{postfix}</span>
           </div>
         ))
       }
     </div>
-    <div class="flex flex-col relative w-full">
+    <div class="grid w-full col-span-1" style={`grid-template-rows: repeat(${totalRows}, minmax(0, 1fr));`}>
       {
         program.map((event) => {
-          const { startRow, rowSpan } = getActivityRow(event);
+          const { rowSpan } = getActivitySpan(event);
           return (
             <div
-              class="flex absolute left-0 w-full px-2 leading-[inherit] text-ellipsis !text-xs font-bold border-y border-y-white last:border-y-0"
-              style={`top: ${(startRow * 100) / intervalsCount}%; height: ${(rowSpan * 100) / intervalsCount}%;`}
+              class="flex w-full px-2 leading-[inherit] text-ellipsis !text-xs font-bold border-t border-t-white"
+              style={getActivityStyle(rowSpan)}
             >
               <span class="flex items-start w-full justify-between">
                 <span>
                   <h3 class="text-lg md:text-xl text-pycon-yellow font-extrabold text-wrap">{event.title}</h3>
-                  {event.description && <p class="text-sm md:text-[14px] font-normal text-wrap">{event.description}</p>}
+                  {event.speaker && (
+                      <p class="text-sm md:text-[14px] text-wrap">{event.speaker.name}</p>
+                      <p class="text-sm md:text-[14px] text-wrap">{event.speaker.title}</p>
+                  )}
                 </span>
                 <p class="text-pycon-yellow text-end text-nowrap md:text-lg">
                   {formatTime(event.timeStart)} - {formatTime(event.timeEnd)}

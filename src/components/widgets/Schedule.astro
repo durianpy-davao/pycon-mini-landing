@@ -8,7 +8,6 @@ import _gridWarp3 from '~/assets/images/schedule/grid-warp-3.png';
 const {
   title = '',
   subtitle = '',
-
   id,
   isDark = false,
   classes = {},
@@ -28,7 +27,7 @@ const gridWarp3 = await getImage({ src: _gridWarp3, quality: 100 });
     title={title}
     subtitle={subtitle}
     classes={{
-      container: 'max-w-7xl px-4 md:px-6 text-left',
+      container: 'max-w-7xl px-4 md:px-6 text-left relative',
       title: 'font-black text-pycon-yellow text-5xl',
     }}
   />
@@ -43,49 +42,64 @@ const gridWarp3 = await getImage({ src: _gridWarp3, quality: 100 });
         },
         {
           title: 'Opening Remarks',
+          speaker: { name: 'TBA' },
           timeStart: 1230,
           timeEnd: 1240,
         },
         {
           title: 'Keynote Speaker 1',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+          speaker: { name: 'TBA' },
           timeStart: 1240,
-          timeEnd: 1310,
+          timeEnd: 1325,
         },
         {
-          title: 'Lightning Talks',
-          timeStart: 1310,
-          timeEnd: 1410,
+          title: 'Lightning Talk 1',
+          speaker: { name: 'TBA' },
+          timeStart: 1325,
+          timeEnd: 1345,
         },
         {
-          title: 'Keynote Speaker 2',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-          timeStart: 1410,
-          timeEnd: 1440,
+          title: 'Lightning Talk 2',
+          speaker: { name: 'TBA' },
+          timeStart: 1345,
+          timeEnd: 1405,
         },
         {
-          title: 'Keynote Speaker 3',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-          timeStart: 1440,
-          timeEnd: 1510,
+          title: 'Lightning Talk 3',
+          speaker: { name: 'TBA' },
+          timeStart: 1405,
+          timeEnd: 1425,
         },
         {
           title: 'Break',
-          timeStart: 1510,
+          timeStart: 1425,
+          timeEnd: 1445,
+        },
+        {
+          title: 'Keynote Speaker 2',
+          speaker: { name: 'TBA' },
+          timeStart: 1445,
           timeEnd: 1530,
         },
         {
-          title: 'Networking Session',
+          title: 'Keynote Speaker 3',
+          speaker: { name: 'TBA' },
           timeStart: 1530,
-          timeEnd: 1630,
+          timeEnd: 1615,
         },
         {
           title: 'Closing Remarks',
+          speaker: { name: 'TBA' },
+          timeStart: 1615,
+          timeEnd: 1630,
+        },
+        {
+          title: 'Picture Taking and Outro',
           timeStart: 1630,
           timeEnd: 1645,
         },
         {
-          title: 'Picture Taking and Outro',
+          title: 'Networking',
           timeStart: 1645,
           timeEnd: 1700,
         },
@@ -93,7 +107,7 @@ const gridWarp3 = await getImage({ src: _gridWarp3, quality: 100 });
     />
     <div class="hidden xl:block basis-1/3 overflow-visible">
       <div
-        class="hidden xl:block absolute inset-0 top-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat bg-contain bg-right"
+        class="hidden xl:block absolute inset-0 top-0 z-[-1] mix-blend-luminosity overflow-visible bg-no-repeat bg-contain bg-right"
         style={`background-image: url(${gridWarp3.src});`}
       >
       </div>
