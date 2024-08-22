@@ -117,7 +117,7 @@ const timeStyle = `grid-row: span ${intervalSpan}/ span ${intervalSpan}`;
 ---
 
 <section class="flex w-full overflow-x-auto xl:basis-2/3 relative z-[1]">
-  <div class="grid w-full min-w-[424px]" role="table" style={`minmax(0, 1fr)); grid-template-columns: 10% 90%;`}>
+  <div class="grid w-full min-w-[424px]" role="table" style="grid-template-columns: 10% 90%;">
     <div class="grid col-span-1" style={`grid-template-rows: repeat(${totalRows}, minmax(0, 1fr));`}>
       {
         timeWithPostFix.map(({ hour, postfix }) => (
