@@ -19,7 +19,7 @@ export const sponsorTiers: tier[] = [
         sponsors: [
             {
                 name: 'Sponsor 1',
-                tagline: 'Sky is the limit',
+                tagline: 'A brighter future',
                 logo: 'https://via.placeholder.com/150',
                 website: 'https://example.com',
             }
@@ -31,19 +31,19 @@ export const sponsorTiers: tier[] = [
         sponsors: [
             {
                 name: 'Sponsor 2',
-                tagline: 'Together we thrive',
+                tagline: 'To infinity and beyond',
                 logo: 'https://via.placeholder.com/150',
                 website: 'https://example.com',
             },
             {
                 name: 'Sponsor 3',
-                tagline: 'Empowering communities',
+                tagline: 'Faster. Higher. Stronger.',
                 logo: 'https://via.placeholder.com/150',
                 website: 'https://example.com',
             },
             {
                 name: 'Sponsor 4',
-                tagline: 'Innovation for all',
+                tagline: 'Just do it',
                 logo: 'https://via.placeholder.com/150',
                 website: 'https://example.com',
             }
@@ -52,26 +52,181 @@ export const sponsorTiers: tier[] = [
     {
         heading: 'Sponsored by:',
         importance: 3,
-        sponsors: []
+        sponsors: [
+            {
+                name: 'Sponsor 5',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 6',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 7',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            }
+        ],
     },
     {
         heading: 'In Cooperation With:',
         importance: 4,
-        sponsors: []
+        sponsors: [
+            {
+                name: 'Sponsor 8',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 9',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 10',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 11',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            }
+        ]
     }
     , {
         heading: 'In Partnership With:',
         importance: 5,
-        sponsors: []
+        sponsors: [
+            {
+                name: 'Sponsor 12',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 13',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 14',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 15',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 16',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+        ]
     },
     {
         heading: 'Contributing Partners',
         importance: 6,
-        sponsors: []
+        sponsors: [
+            {
+                name: 'Sponsor 17',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 18',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 19',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 20',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 21',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+        ]
     },
     {
         heading: 'Community Patners',
         importance: 6,
-        sponsors: []
+        sponsors: [
+            {
+                name: 'Sponsor 22',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 23',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 24',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 25',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 26',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 27',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 28',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            },
+            {
+                name: 'Sponsor 29',
+                tagline: '',
+                logo: 'https://via.placeholder.com/150',
+                website: 'https://example.com',
+            }
+        ]
     }
 ]
