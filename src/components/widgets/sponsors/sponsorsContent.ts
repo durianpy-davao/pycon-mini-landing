@@ -1,5 +1,18 @@
+type sponsor = {
+    name: string,
+    tagline: string,
+    logo: string,
+    website: string,
+}
+
+export type tier = {
+    heading: string,
+    importance: number,
+    sponsors: sponsor[]
+}
+
 // listed in order of appearance/importance
-export const sponsorTiers = [
+export const sponsorTiers: tier[] = [
     {
         heading: 'Keystone Benefactor',
         importance: 1,
