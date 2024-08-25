@@ -7,21 +7,31 @@ interface Props {
 }
 
 const { sponsorTier } = Astro.props;
+const { heading, importance, sponsors } = sponsorTier; // NOTE: is there a better way to destructure this?
 ---
 
 <div class="w-full relative">
+  <!-- HEADER -->
   <div
     class="absolute left-1/2 transform -translate-x-1/2 w-fit p-2 px-4 rounded-xl text-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FEF85D] to-[#989438]"
   >
-    <h3 class="font-extrabold text-2xl uppercase text-[#453C1A]">{sponsorTier.heading}</h3>
+    <h3 class="font-extrabold text-2xl uppercase text-[#453C1A]">{heading}</h3>
   </div>
 
   <div class="mt-5 p-1 rounded-lg border-gradient w-full">
-    <div class="p-4 pt-8 flex items-center justify-center">
+    <!-- SPONSORS -->
+    <div class="text-center p-6 pt-12 flex items-center justify-around">
       {
-        sponsorTier.sponsors.map((sponsor) => (
-          <div class="sponsor-container flex items-center justify-center p-2 border-b">
-            <img class="h-16" src={sponsor.logo} alt={sponsor.name} />
+        sponsors.map((sponsor) => (
+          <div class={`flex flex-col items-center px-4 text-[1.75rem] ${importance ? `text-${importance}` : ''}`}>
+            <div
+              class={`sponsor-frame flex items-center justify-center p-2  ${importance ? `frame-${importance}` : ''}`}
+            >
+              <img class="rounded-full h-full" src={sponsor.logo} alt={sponsor.name} />
+            </div>
+
+            <h4 class={`font-bold pt-1 ${importance == 6 ? 'hidden' : ''} `}>{sponsor.name}</h4>
+            <h5 class={`italic font-medium text-xl ${importance > 2 ? 'hidden' : ''}`}>{sponsor.tagline}</h5>
           </div>
         ))
       }
@@ -30,7 +40,34 @@ const { sponsorTier } = Astro.props;
 </div>
 
 <style>
-  .sponsor-container {
+  .sponsor-frame {
+    width: fit-content;
+    border: 1px solid #7c47c2;
+    border-radius: 2rem;
+    padding: 1rem;
+    background: radial-gradient(
+      165.01% 102.17% at 47.39% -2.17%,
+      #5c09bb 3.97%,
+      #5208a7 8.84%,
+      #410874 22.11%,
+      #3a0871 31.67%,
+      #340864 38.79%,
+      #330863 71.38%
+    );
+  }
+  .frame-6 {
+    border: none;
+    background: none;
+    background-color: transparent;
+  }
+  .text-3 {
+    font-size: 1.5rem; /* 24px */
+  }
+  .text-4 {
+    font-size: 1.3125rem; /*21px*/
+  }
+  .text-5 {
+    font-size: 1.125rem; /*18px*/
   }
   .border-gradient {
     border: 4px transparent;

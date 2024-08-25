@@ -5,6 +5,7 @@ import SponsorType from './SponsorType.astro';
 ---
 
 <WidgetWrapper containerClass="mb-10 font-montserrat lg:!pr-0">
+  <!-- HEADER -->
   <div class="bg-container flex flex-col items-center justify-center md:m-5 p-5 md:rounded-2xl">
     <div class="flex w-full justify-center bg-radial-gradient from-[#FEF85D66] via-[#98943866] to-[#73737307] to-80%">
       <div
@@ -15,6 +16,7 @@ import SponsorType from './SponsorType.astro';
     </div>
     <p class="pt-2 pb-4 font-bold text-xl">This event was made possible with the help of our generous sponsors</p>
 
+    <!-- SPONSOR TIERS -->
     <div class="w-full flex flex-col gap-9">
         {sponsorTiers.map((tier) => (
             <SponsorType sponsorTier={tier} />
