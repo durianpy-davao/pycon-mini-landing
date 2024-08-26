@@ -7,15 +7,15 @@ type sponsor = {
 
 export type tier = {
     heading: string,
-    importance: number,
+    prio: number,
     sponsors: sponsor[]
 }
 
-// listed in order of appearance/importance
+// listed in order of appearance/prio
 export const sponsorTiers: tier[] = [
     {
         heading: 'Keystone Benefactor',
-        importance: 1,
+        prio: 1,
         sponsors: [
             {
                 name: 'Sponsor 1',
@@ -27,7 +27,7 @@ export const sponsorTiers: tier[] = [
     },
     {
         heading: 'Co-Presented by:',
-        importance: 2,
+        prio: 2,
         sponsors: [
             {
                 name: 'Sponsor 2',
@@ -51,7 +51,7 @@ export const sponsorTiers: tier[] = [
     },
     {
         heading: 'Sponsored by:',
-        importance: 3,
+        prio: 3,
         sponsors: [
             {
                 name: 'Sponsor 5',
@@ -75,7 +75,7 @@ export const sponsorTiers: tier[] = [
     },
     {
         heading: 'In Cooperation With:',
-        importance: 4,
+        prio: 4,
         sponsors: [
             {
                 name: 'Sponsor 8',
@@ -105,7 +105,7 @@ export const sponsorTiers: tier[] = [
     }
     , {
         heading: 'In Partnership With:',
-        importance: 5,
+        prio: 5,
         sponsors: [
             {
                 name: 'Sponsor 12',
@@ -141,7 +141,7 @@ export const sponsorTiers: tier[] = [
     },
     {
         heading: 'Contributing Partners',
-        importance: 6,
+        prio: 6,
         sponsors: [
             {
                 name: 'Sponsor 17',
@@ -177,7 +177,7 @@ export const sponsorTiers: tier[] = [
     },
     {
         heading: 'Community Patners',
-        importance: 6,
+        prio: 6,
         sponsors: [
             {
                 name: 'Sponsor 22',

@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { sponsorTier } = Astro.props;
-const { heading, importance, sponsors } = sponsorTier; // NOTE: is there a better way to destructure this?
+const { heading, prio, sponsors } = sponsorTier;
 ---
 
 <div class="w-full relative">
@@ -20,18 +20,16 @@ const { heading, importance, sponsors } = sponsorTier; // NOTE: is there a bette
 
   <div class="mt-5 p-1 rounded-lg border-gradient w-full">
     <!-- SPONSORS -->
-    <div class="text-center p-6 pt-12 flex items-center justify-around">
+    <div class="text-center p-6 pt-12 flex items-center justify-center">
       {
         sponsors.map((sponsor) => (
-          <div class={`flex flex-col items-center px-4 text-[1.75rem] ${importance ? `text-${importance}` : ''}`}>
-            <div
-              class={`sponsor-frame flex items-center justify-center p-2  ${importance ? `frame-${importance}` : ''}`}
-            >
+          <div class={`flex flex-col items-center px-4 text-[1.75rem] ${prio ? `text-${prio}` : ''}`}>
+            <div class={`sponsor-frame flex items-center justify-center p-2  ${prio ? `frame-${prio}` : ''}`}>
               <img class="rounded-full h-full" src={sponsor.logo} alt={sponsor.name} />
             </div>
 
-            <h4 class={`font-bold pt-1 ${importance == 6 ? 'hidden' : ''} `}>{sponsor.name}</h4>
-            <h5 class={`italic font-medium text-xl ${importance > 2 ? 'hidden' : ''}`}>{sponsor.tagline}</h5>
+            <h4 class={`font-bold ${prio == 6 ? 'hidden' : ''} `}>{sponsor.name}</h4>
+            <h5 class={`italic font-medium text-xl ${prio > 6 ? 'hidden' : ''}`}>{sponsor.tagline}</h5>
           </div>
         ))
       }
