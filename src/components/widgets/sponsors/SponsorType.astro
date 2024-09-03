@@ -1,14 +1,16 @@
 ---
-import { Image } from 'astro:assets';
-import WidgetWrapper from '../../ui/WidgetWrapper.astro';
-import { type tier } from '~/components/widgets/sponsors/sponsorsContent.ts';
+import { getImage, Image } from 'astro:assets';
+import { type Tier } from '~/components/widgets/sponsors/sponsorsContent.ts';
+import _grid from '~/assets/images/sponsors/grid.png';
 
 interface Props {
-  sponsorTier: tier;
+  sponsorTier: Tier;
 }
 
 const { sponsorTier } = Astro.props;
 const { heading, prio, sponsors } = sponsorTier;
+
+const grid = await getImage({ src: _grid, quality: 100 });
 ---
 
 <div class="w-full relative">
@@ -22,19 +24,34 @@ const { heading, prio, sponsors } = sponsorTier;
   <div class="mt-5 p-1 rounded-lg border-gradient w-full">
     <!-- SPONSORS -->
     <div
-      class={`text-center p-2 pt-10 sm:p-10 sm:pt-14 flex flex-wrap items-center justify-evenly gap-2 sm:gap-4 ${prio > 4 ? 'carousel' : ''}`}
+      class="text-center p-2 pt-10 sm:p-10 sm:pt-14 flex flex-wrap items-center justify-evenly gap-2 sm:gap-4 bg-contain"
+      style={`background-image:url(${grid.src})`}
     >
       {
-        sponsors.map((sponsor) => (
-          <div class={`flex flex-shrink-0 flex-col items-center md:px-4 text-lg md:text-[1.75rem] text-${prio}`}>
-            <div class={`mb-2 sponsor-frame frame-${prio}`}>
-              <Image class="rounded-full w-full" src={sponsor.logo} alt="hi" width={150} height={150} />
-            </div>
+        sponsors.map((sponsor) => {
+          const containerClass = `flex flex-shrink-0 flex-col items-center md:px-4 text-lg md:text-[1.75rem] text-${prio}`;
+          const imageContainerClass = `mb-2 sponsor-frame frame-${prio}`;
+          const h4Class = `font-bold ${prio == 6 ? 'hidden' : ''}`;
+          const h5Class = `italic font-medium md:text-xl ${prio > 6 ? 'hidden' : ''}`;
+          return (
+            <a href={sponsor.website} target="_blank" rel="noopener noreferrer" title={sponsor.name} class="group">
+              <div class={containerClass}>
+                <div class={imageContainerClass}>
+                  <Image
+                    class="rounded-full w-full group-hover:opacity-75 transition-opacity"
+                    src={sponsor.logo}
+                    alt={`${sponsor.name.trim()}-logo`}
+                    width={150}
+                    height={150}
+                  />
+                </div>
 
-            <h4 class={`font-bold ${prio == 6 ? 'hidden' : ''} `}>{sponsor.name}</h4>
-            <h5 class={`italic font-medium md:text-xl ${prio > 6 ? 'hidden' : ''}`}>{sponsor.tagline}</h5>
-          </div>
-        ))
+                <h4 class={h4Class}>{sponsor.name}</h4>
+                <h5 class={h5Class}>{sponsor.tagline}</h5>
+              </div>
+            </a>
+          );
+        })
       }
     </div>
   </div>
@@ -43,9 +60,6 @@ const { heading, prio, sponsors } = sponsorTier;
 <style>
   .sponsor-frame {
     width: 8.5rem; /* 136px */
-    @media (min-width: 640px) {
-      width: 15rem; /* 240px */
-    }
     border: 1px solid #7c47c2;
     border-radius: 2rem;
     padding: 1rem;
@@ -59,26 +73,21 @@ const { heading, prio, sponsors } = sponsorTier;
       #330863 71.38%
     );
   }
+
   .frame-3 {
     width: 7.5rem; /* 120px */
-    @media (min-width: 640px) {
-      width: 11.25rem; /* 180px */
-    }
   }
+
   .frame-4 {
     width: 6.25rem; /* 100px */
-    @media (min-width: 640px) {
-      width: 8.75rem; /* 140px */
-    }
   }
+
   .frame-5 {
     width: 4.5rem; /* 72px */
     padding: 0.5rem;
     border-radius: 1.5rem;
-    @media (min-width: 640px) {
-      width: 7rem; /* 112px */
-    }
   }
+
   .frame-6 {
     border: none;
     background: none;
@@ -86,29 +95,20 @@ const { heading, prio, sponsors } = sponsorTier;
     width: 3.75rem; /* 60px */
     margin: 0.5rem;
     padding: 0;
-    @media (min-width: 640px) {
-      width: 6rem; /* 96px */
-    }
   }
 
   .text-3 {
-    font-size: 0.813rem /* 13px */;
-    @media (min-width: 640px) {
-      font-size: 1.5rem; /* 24px */
-    }
+    font-size: 0.813rem; /* 13px */
   }
+
   .text-4 {
-    font-size: 0.813rem /* 13px */;
-    @media (min-width: 640px) {
-      font-size: 1.3125rem /* 21px */;
-    }
+    font-size: 0.813rem; /* 13px */
   }
+
   .text-5 {
-    font-size: 0.813rem /* 13px */;
-    @media (min-width: 640px) {
-      font-size: 1.125rem; /*18px*/
-    }
+    font-size: 0.813rem; /* 13px */
   }
+
   .border-gradient {
     border: 4px transparent;
     border-radius: 1rem;
@@ -116,5 +116,39 @@ const { heading, prio, sponsors } = sponsorTier;
       linear-gradient(180deg, #fef85d 0%, #b5b142 44.5%, #989438 100%);
     background-origin: border-box;
     background-clip: content-box, border-box;
+  }
+
+  @media (min-width: 640px) {
+    .sponsor-frame {
+      width: 15rem; /* 240px */
+    }
+
+    .frame-3 {
+      width: 11.25rem; /* 180px */
+    }
+
+    .frame-4 {
+      width: 8.75rem; /* 140px */
+    }
+
+    .frame-5 {
+      width: 7rem; /* 112px */
+    }
+
+    .frame-6 {
+      width: 6rem; /* 96px */
+    }
+
+    .text-3 {
+      font-size: 1.5rem; /* 24px */
+    }
+
+    .text-4 {
+      font-size: 1.3125rem; /* 21px */
+    }
+
+    .text-5 {
+      font-size: 1.125rem; /* 18px */
+    }
   }
 </style>

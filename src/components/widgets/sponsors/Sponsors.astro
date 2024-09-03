@@ -14,13 +14,13 @@ import SponsorType from './SponsorType.astro';
         <h1>SPONSORS</h1>
       </div>
     </div>
-    <p class="pt-2 pb-10 font-bold text-center text-xl">This event was made possible with the help of our generous sponsors</p>
+    <p class="pt-2 pb-10 font-bold text-center text-xl">
+      This event was made possible with the help of our generous sponsors
+    </p>
 
     <!-- SPONSOR TIERS -->
     <div class="w-full flex flex-col gap-9">
-        {sponsorTiers.map((tier) => (
-            <SponsorType sponsorTier={tier} />
-        ))}
+      {sponsorTiers.map((tier) => <SponsorType sponsorTier={tier} />)}
     </div>
   </div>
 </WidgetWrapper>
