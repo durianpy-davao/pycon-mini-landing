@@ -30,11 +30,11 @@ const grid = await getImage({ src: _grid, quality: 100 });
       {
         sponsors.map((sponsor) => {
           const containerClass = `flex flex-shrink-0 flex-col items-center md:px-0 text-lg md:text-[1.75rem] text-${priority}`;
-          const imageContainerClass = `frame-${priority} mb-2 sponsor-frame`;
+          const imageContainerClass = `frame-${priority} mb-2 sponsor-frame flex items-center justify-center`;
           const h4Class = `font-bold ${priority === 6 ? 'hidden' : ''}`;
           const h5Class = `italic font-medium md:text-xl ${priority > 6 ? 'hidden' : ''}`;
           const linkClassName = `group ${sponsor.website ? 'cursor-pointer' : '' }`
-          const imageClassName = `w-full ${sponsor.website ? 'group-hover:opacity-30 transition-opacity' : '' }`
+          const imageClassName = `max-h-full max-w-[30vw] w-auto ${sponsor.website ? 'group-hover:opacity-30 transition-opacity' : '' }`
           return (
             <a
               href={sponsor.website}
@@ -70,31 +70,24 @@ const grid = await getImage({ src: _grid, quality: 100 });
 
 <style>
   .sponsor-frame {
-    width: 8.5rem; /* 136px */
-    border: 1px solid #7c47c2;
+    height: 8.5rem; /* 136px */
+    border: 1px solid #87842B;
     border-radius: 2rem;
     padding: 1rem;
-    background: radial-gradient(
-      165.01% 102.17% at 47.39% -2.17%,
-      #5c09bb 3.97%,
-      #5208a7 8.84%,
-      #410874 22.11%,
-      #3a0871 31.67%,
-      #340864 38.79%,
-      #330863 71.38%
-    );
+    background: radial-gradient(47% 29.35% at 51.52% 1.74%, rgba(254, 248, 93, 0.5) 0%, rgba(214, 209, 78, 0.5) 33.65%, rgba(188, 184, 69, 0.5) 57.89%, rgba(171, 167, 63, 0.5) 78.2%, rgba(152, 148, 56, 0.5) 100%);
+
   }
 
   .frame-3 {
-    width: 7.5rem; /* 120px */
+    height: 7.5rem; /* 120px */
   }
 
   .frame-4 {
-    width: 6.25rem; /* 100px */
+    height: 6.25rem; /* 100px */
   }
 
   .frame-5 {
-    width: 4.5rem; /* 72px */
+    height: 4.5rem; /* 72px */
     padding: 0.5rem;
     border-radius: 1.5rem;
   }
@@ -103,7 +96,7 @@ const grid = await getImage({ src: _grid, quality: 100 });
     border: none;
     background: none;
     background-color: transparent;
-    width: 3.75rem; /* 60px */
+    height: 3.75rem; /* 60px */
     padding: 0rem;
   }
 
@@ -130,23 +123,29 @@ const grid = await getImage({ src: _grid, quality: 100 });
 
   @media (min-width: 640px) {
     .sponsor-frame {
-      width: 15rem; /* 240px */
+      height: 15rem; /* 240px */
+      padding: 1.5rem;
     }
 
     .frame-3 {
-      width: 11.25rem; /* 180px */
+      height: 11.25rem; /* 180px */
     }
 
     .frame-4 {
-      width: 9rem; /* 140px */
+      height: 9rem; /* 140px */
     }
 
     .frame-5 {
-      width: 8rem; /* 112px */
+      height: 8rem; /* 112px */
     }
 
     .frame-6 {
-      width: 7rem; /* 96px */
+      height: 7rem; /* 96px */
+
+      /* img {
+        height: 100%;
+        width: fit-content;
+      } */
     }
 
     .text-3 {
