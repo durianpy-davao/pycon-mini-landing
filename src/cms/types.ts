@@ -66,7 +66,8 @@ export interface GroupedSponsorTier {
 }
 
 export const SPONSOR_PRIORITY: Record<string, number> = {
-  diversity: 1,
+  keystone: 1,
+  diversity: 2,
   platinum: 2,
   food: 3,
   gold: 4,
