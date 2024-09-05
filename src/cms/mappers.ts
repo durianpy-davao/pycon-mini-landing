@@ -62,12 +62,12 @@ export function sponsorsMapper(sponsorTiers: SponsorTier[], sponsors: Sponsor[])
   const sponsorsInfo = sponsorTiers
     .map((tier) => ({
       name: tier.name,
+      order: tier.order,
       displayName: tier.displayName,
-      billingAcknowledgement: tier.billingAcknowledgement, // typo
+      billingAcknowledgement: tier.billingAcknowledgement,
       priority: SPONSOR_PRIORITY[tier.name],
       sponsors: sponsors.filter((sponsor) => sponsor.sponsorTier.name === tier.name),
     }))
-    .sort((a, b) => a.priority - b.priority);
-
+    .sort((a, b) => a.order - b.order);
   return sponsorsInfo;
 }

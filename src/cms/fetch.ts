@@ -44,6 +44,7 @@ export async function fetchCMS() {
                 listSponsorTierModels{
                     data {
                         name
+                        order
                         displayName
                         billingAcknowledgement
                     }
@@ -57,6 +58,7 @@ export async function fetchCMS() {
                         website
                         sponsorTier {
                             name
+                            order
                             displayName
                             billingAcknowledgement
                         }

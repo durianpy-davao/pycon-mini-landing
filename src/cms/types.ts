@@ -44,6 +44,7 @@ export type Schedule = ReturnType<typeof eventScheduleMapper>;
 
 export interface SponsorTier {
   name: string;
+  order: number;
   displayName: string;
   billingAcknowledgement: string;
 }
@@ -67,10 +68,11 @@ export interface GroupedSponsorTier {
 
 export const SPONSOR_PRIORITY: Record<string, number> = {
   keystone: 1,
-  diversity: 2,
+  organized: 1,
   platinum: 2,
   food: 3,
-  gold: 4,
+  gold: 3,
+  diversity: 3,
   silver: 5,
   'in-kind': 5,
   contributing: 6,

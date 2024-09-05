@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { sponsorGroup } = Astro.props;
-const { priority, billingAcknowledgement, sponsors } = sponsorGroup;
+const { priority, displayName, sponsors } = sponsorGroup;
 
 const grid = await getImage({ src: _grid, quality: 100 });
 ---
@@ -18,13 +18,13 @@ const grid = await getImage({ src: _grid, quality: 100 });
   <div
     class="absolute whitespace-nowrap left-1/2 transform -translate-x-1/2 p-2 px-4 rounded-xl text-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FEF85D] to-[#989438]"
   >
-    <h3 class="font-extrabold text-lg md:text-2xl uppercase text-[#453C1A]">{billingAcknowledgement}</h3>
+    <h3 class="font-extrabold text-lg md:text-2xl uppercase text-[#453C1A]">{displayName}</h3>
   </div>
 
   <div class="mt-5 p-1 rounded-lg border-gradient w-full">
     <!-- SPONSORS -->
     <div
-      class="text-center p-2 pt-10 sm:p-10 sm:pt-14 flex flex-wrap items-center justify-evenly gap-2 sm:gap-4 bg-contain"
+      class="text-center p-2 pt-10 sm:p-10 sm:pt-14 flex flex-wrap items-center justify-evenly gap-4 bg-contain"
       style={`background-image:url(${grid.src})`}
     >
       {
@@ -75,7 +75,6 @@ const grid = await getImage({ src: _grid, quality: 100 });
     border-radius: 2rem;
     padding: 1rem;
     background: radial-gradient(47% 29.35% at 51.52% 1.74%, rgba(254, 248, 93, 0.5) 0%, rgba(214, 209, 78, 0.5) 33.65%, rgba(188, 184, 69, 0.5) 57.89%, rgba(171, 167, 63, 0.5) 78.2%, rgba(152, 148, 56, 0.5) 100%);
-
   }
 
   .frame-3 {
@@ -136,16 +135,12 @@ const grid = await getImage({ src: _grid, quality: 100 });
     }
 
     .frame-5 {
-      height: 8rem; /* 112px */
+      height: 7.5rem; /* 112px */
     }
 
     .frame-6 {
-      height: 7rem; /* 96px */
-
-      /* img {
-        height: 100%;
-        width: fit-content;
-      } */
+      height: 6.5rem; /* 96px */
+      padding: 0.8rem;
     }
 
     .text-3 {
