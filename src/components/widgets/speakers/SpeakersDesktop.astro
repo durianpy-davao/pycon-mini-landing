@@ -1,5 +1,6 @@
 ---
 import { type Speaker } from './speakersContent.ts';
+import { Image } from 'astro:assets';
 
 interface Props {
   speaker: Speaker;
@@ -8,8 +9,17 @@ interface Props {
 const { speaker } = Astro.props;
 ---
 
-<>
-  <div class="group-hover:invisible invisible lg:visible">
+<div class="invisible sm:visible group border-[3px] border-pycon-yellow hover:border-[#DDDDDD] rounded-md relative">
+  <div class="h-72 w-72">
+    <Image
+      class="w-full"
+      src={speaker.image}
+      alt={`${speaker.name.trim()}`}
+      width={150}
+      height={150}
+    />
+  </div>
+  <div class="group-hover:invisible">
     <div
       class="absolute inset-x-0 bottom-0 w-full h-[35%] bg-gradient-to-t from-pycon-yellow via-[#FEF85DAA] to-transparent"
     >
@@ -20,7 +30,7 @@ const { speaker } = Astro.props;
     </div>
   </div>
   <div
-    class="group-hover:visible invisible hidden bg-black bg-opacity-60 h-full w-full absolute inset-0 lg:flex flex-col items-center justify-center"
+    class="group-hover:visible invisible hidden bg-black bg-opacity-60 h-full w-full absolute inset-0 sm:flex flex-col items-center justify-center"
   >
     <div class="text-pycon-yellow text-xl font-bold pb-2">{speaker.name}</div>
     <div class="text-white text-sm font-bold italic text-center">
@@ -33,7 +43,7 @@ const { speaker } = Astro.props;
       {speaker.description}
     </div>
   </div>
-</>
+</div>
 
 <style>
   .preview-text {
