@@ -1,0 +1,42 @@
+---
+import { type Speaker } from './speakersContent.ts';
+
+interface Props {
+  speaker: Speaker;
+}
+
+const { speaker } = Astro.props;
+---
+
+<>
+  <div class="group-hover:invisible invisible lg:visible">
+    <div
+      class="absolute inset-x-0 bottom-0 w-full h-[35%] bg-gradient-to-t from-pycon-yellow via-[#FEF85DAA] to-transparent"
+    >
+    </div>
+    <div class="absolute inset-x-0 bottom-0 preview-text font-bold bottom text-center pb-3">
+      <h3 class="text-2xl">{speaker.name}</h3>
+      <h5 class="text-sm">{speaker.title}</h5>
+    </div>
+  </div>
+  <div
+    class="group-hover:visible invisible hidden bg-black bg-opacity-60 h-full w-full absolute inset-0 lg:flex flex-col items-center justify-center"
+  >
+    <div class="text-pycon-yellow text-xl font-bold pb-2">{speaker.name}</div>
+    <div class="text-white text-sm font-bold italic text-center">
+      {speaker.title}
+      <br />
+      {speaker.position} | {speaker.organization}
+    </div>
+    <div class="text-pycon-yellow font-bold py-5">"{speaker.talkTitle}"</div>
+    <div class="text-white text-sm font-bold text-center">
+      {speaker.description}
+    </div>
+  </div>
+</>
+
+<style>
+  .preview-text {
+    color: #410874;
+  }
+</style>

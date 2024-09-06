@@ -1,0 +1,14 @@
+---
+import { type Speaker } from './speakersContent.ts';
+
+interface Props {
+  speaker: Speaker;
+}
+
+const { speaker } = Astro.props;
+---
+
+<div class="lg:hidden flex flex-col text-white font-bold mx-auto py-5">
+  <span class="text-3xl">{speaker.name}</span>
+  <span class="text-pycon-yellow">{speaker.title}</span>
+</div>

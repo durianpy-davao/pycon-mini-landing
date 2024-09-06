@@ -22,7 +22,7 @@ const { id } = Astro.props;
     <span class="text-pycon-yellow">Pyconf Mini Davao 2024</span>
   </h3>
 
-  <div class="grid grid-cols-3 gap-10">
+  <div class="grid lg:grid-cols-3 gap-10">
     {speakersPlaceholder.map((speaker) => <SpeakerCard speaker={speaker} />)}
   </div>
   <Fragment slot="bg">
