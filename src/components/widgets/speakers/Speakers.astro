@@ -1,0 +1,35 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import SpeakerCard from '~/components/widgets/speakers/SpeakerCard.astro';
+import _ellipse2 from '~/assets/images/ellipse2.png';
+import _pGrid from '~/assets/images/code-of-conduct/p-grid.png';
+import { speakersPlaceholder } from './speakersContent.ts';
+import { getImage } from 'astro:assets';
+
+const ellipse2 = await getImage({ src: _ellipse2, quality: 100 });
+const pGrid = await getImage({ src: _pGrid, quality: 100 });
+
+const { id } = Astro.props;
+---
+
+<WidgetWrapper id={id} containerClass="flex flex-col items-center gap-10">
+  <h2 class="text-6xl text-white font-bold">
+    Our <span class="text-pycon-yellow">Speakers</span>
+  </h2>
+
+  <h3 class="text-2xl text-white text-center font-bold italic mb-10">
+    Discover groundbreaking ideas from our speakers at <br />
+    <span class="text-pycon-yellow">Pyconf Mini Davao 2024</span>
+  </h3>
+
+  <div class="grid grid-cols-3 gap-10">
+    {speakersPlaceholder.map((speaker) => <SpeakerCard speaker={speaker} />)}
+  </div>
+  <Fragment slot="bg">
+    <div
+      class="hidden lg:block absolute inset-0 z-0 mix-blend-luminosity overflow-visible bg-no-repeat"
+      style={`background-image: url(${ellipse2.src}); background-position: 50% 80%; background-size: auto 1000px;`}
+    >
+    </div>
+  </Fragment>
+</WidgetWrapper>
