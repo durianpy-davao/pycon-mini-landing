@@ -9,15 +9,9 @@ interface Props {
 const { speaker } = Astro.props;
 ---
 
-<div class="invisible sm:visible group border-[3px] border-pycon-yellow hover:border-[#DDDDDD] rounded-md relative">
+<div class="hidden sm:block group border-[3px] border-pycon-yellow hover:border-[#DDDDDD] rounded-md relative">
   <div class="h-72 w-72">
-    <Image
-      class="w-full"
-      src={speaker.image}
-      alt={`${speaker.name.trim()}`}
-      width={150}
-      height={150}
-    />
+    <Image class="w-full" src={speaker.image} alt={`${speaker.name.trim()}`} width={150} height={150} />
   </div>
   <div class="group-hover:invisible">
     <div

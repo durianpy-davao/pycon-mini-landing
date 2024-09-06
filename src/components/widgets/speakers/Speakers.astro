@@ -1,6 +1,5 @@
 ---
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import SpeakerCard from '~/components/widgets/speakers/SpeakerCard.astro';
 import _ellipse2 from '~/assets/images/ellipse2.png';
 import _pGrid from '~/assets/images/code-of-conduct/p-grid.png';
 import { speakersPlaceholder } from './speakersContent.ts';
@@ -30,7 +29,7 @@ const { id } = Astro.props;
         <span>
           {/* RESPONSIVE DISPLAY */}
           <SpeakersDesktop speaker={speaker} />
-          {/* <SpeakersMobile speaker={speaker} /> */}
+          <SpeakersMobile speaker={speaker} />
         </span>
       ))
     }
