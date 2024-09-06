@@ -1,7 +1,13 @@
 ---
+import type { GroupedSponsorTier } from '~/cms/types';
 import WidgetWrapper from '../../ui/WidgetWrapper.astro';
-import { sponsorTiers } from './sponsorsContent';
 import SponsorType from './SponsorType.astro';
+
+interface Props {
+  sponsorsInfo: GroupedSponsorTier[];
+}
+
+const { sponsorsInfo } = Astro.props;
 ---
 
 <WidgetWrapper containerClass="mb-10 font-montserrat lg:!pr-0">
@@ -20,7 +26,7 @@ import SponsorType from './SponsorType.astro';
 
     <!-- SPONSOR TIERS -->
     <div class="w-full flex flex-col gap-9">
-      {sponsorTiers.map((tier) => <SponsorType sponsorTier={tier} />)}
+      {sponsorsInfo.map((sponsorGroup) => <SponsorType sponsorGroup={sponsorGroup} />)}
     </div>
   </div>
 </WidgetWrapper>
