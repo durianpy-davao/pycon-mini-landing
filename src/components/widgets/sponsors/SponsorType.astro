@@ -30,7 +30,7 @@ const grid = await getImage({ src: _grid, quality: 100 });
       {
         sponsors.map((sponsor) => {
           const containerClass = `flex flex-shrink-0 flex-col items-center md:px-0 text-lg md:text-[1.75rem] text-${priority}`;
-          const imageContainerClass = `frame-${priority} mb-2 sponsor-frame flex items-center justify-center`;
+          const imageContainerClass = `frame-${priority} mb-2 frame flex items-center justify-center`;
           const h4Class = `font-bold ${priority === 6 ? 'hidden' : ''}`;
           const h5Class = `italic font-medium md:text-xl ${priority > 6 ? 'hidden' : ''}`;
           const linkClassName = `group ${sponsor.website ? 'cursor-pointer' : '' }`
@@ -69,16 +69,16 @@ const grid = await getImage({ src: _grid, quality: 100 });
 </div>
 
 <style>
-  .sponsor-frame {
+  .frame-3 {
+    height: 7.5rem; /* 120px */
+  }
+
+  .frame {
     height: 8.5rem; /* 136px */
     border: 1px solid #87842B;
     border-radius: 2rem;
     padding: 1rem;
     background: radial-gradient(47% 29.35% at 51.52% 1.74%, rgba(254, 248, 93, 0.5) 0%, rgba(214, 209, 78, 0.5) 33.65%, rgba(188, 184, 69, 0.5) 57.89%, rgba(171, 167, 63, 0.5) 78.2%, rgba(152, 148, 56, 0.5) 100%);
-  }
-
-  .frame-3 {
-    height: 7.5rem; /* 120px */
   }
 
   .frame-4 {
@@ -121,7 +121,7 @@ const grid = await getImage({ src: _grid, quality: 100 });
   }
 
   @media (min-width: 640px) {
-    .sponsor-frame {
+    .frame {
       height: 15rem; /* 240px */
       padding: 1.5rem;
     }
