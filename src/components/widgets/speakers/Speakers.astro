@@ -12,13 +12,13 @@ const pGrid = await getImage({ src: _pGrid, quality: 100 });
 const { id } = Astro.props;
 ---
 
-<WidgetWrapper id={id} containerClass="flex flex-col items-center gap-10">
-  <h2 class="text-6xl text-white font-bold">
+<WidgetWrapper id={id} containerClass="flex flex-col items-center gap-4 sm:gap-10">
+  <h2 class="text-4xl sm:text-6xl text-white font-bold text-center">
     Our <span class="text-pycon-yellow">Speakers</span>
   </h2>
 
-  <h3 class="text-2xl text-white text-center font-bold italic mb-10">
-    Discover groundbreaking ideas from our speakers at <br />
+  <h3 class="sm:text-2xl sm:max-w-[41rem] text-white text-center font-bold italic mb-10">
+    Discover groundbreaking ideas from our speakers at
     <span class="text-pycon-yellow">Pyconf Mini Davao 2024</span>
   </h3>
 
