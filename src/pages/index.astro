@@ -11,11 +11,14 @@ import ContactAndLicense from '~/components/widgets/ContactAndLicense.astro';
 import CodeOfConduct from '~/components/widgets/CodeOfConduct.astro';
 import pyconHero from '~/assets/images/logo.png';
 import Sponsors from '~/components/widgets/sponsors/Sponsors.astro';
+import { fetchCMS } from '~/cms/fetch';
 
 const metadata = {
   title: 'PyConf Mini Davao',
   ignoreTitleTemplate: true,
 };
+
+const cmsData = await fetchCMS();
 ---
 
 <Layout metadata={metadata}>
@@ -66,7 +69,7 @@ const metadata = {
   <Speakers id="speakers" />
 
   <!-- Schedule Widget **************** -->
-  <Schedule id="schedule" title="Schedule">
+  <Schedule schedule={cmsData.schedule} id="schedule" title="Schedule">
     <Fragment slot="bg">
       <div class="absolute inset-0" style="background: linear-gradient(180deg, #2A0455 70%, #3D3C19 100%);"></div>
     </Fragment>
@@ -77,5 +80,5 @@ const metadata = {
   <ContactAndLicense id="contact-us" />
 
   <!-- Sponsorship Widget ************ -->
-  <Sponsors />
+  <Sponsors sponsorsInfo={cmsData.sponsorsInfo} />
 </Layout>
