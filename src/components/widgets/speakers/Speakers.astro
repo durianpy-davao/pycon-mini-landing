@@ -13,7 +13,19 @@ const pGrid = await getImage({ src: _pGrid, quality: 100 });
 const { id } = Astro.props;
 ---
 
-<WidgetWrapper id={id} containerClass="flex flex-col items-center gap-4 sm:gap-10">
+<WidgetWrapper id={id} containerClass="flex flex-col items-center gap-4 sm:gap-10 overflow-clip">
+  <div class="w-screen opacity-60">
+    <div
+      class="absolute scale-x-[-1] top-[-20vw] left-[-10vw] z-0 bg-no-repeat bg-cover rotate-[25deg] h-[50vw] w-[35vw]"
+      style=`background-image: url(${pGrid.src})`
+    >
+    </div>
+    <div
+      class="absolute top-[-20vw] right-[-10vw] z-0 bg-no-repeat bg-cover -rotate-[25deg] h-[50vw] w-[35vw]"
+      style=`background-image: url(${pGrid.src})`
+    >
+    </div>
+  </div>
   <h2 class="text-4xl sm:text-6xl text-white font-bold text-center">
     Our <span class="text-pycon-yellow">Speakers</span>
   </h2>

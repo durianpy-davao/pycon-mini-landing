@@ -9,8 +9,10 @@ interface Props {
 const { speaker } = Astro.props;
 ---
 
-<div class="sm:hidden group sm:border-pycon-yellow rounded-md relative">
-  <div class="h-72 w-72">
+<div
+  class="sm:hidden group sm:border-pycon-yellow rounded-md relative w-[80vw] flex flex-col items-center pt-4 mb-4 "
+>
+  <div class="h-60 w-60">
     <Image
       class="w-full border-[3px] border-pycon-yellow rounded-full"
       src={speaker.image}
