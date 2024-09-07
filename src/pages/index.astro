@@ -6,6 +6,7 @@ import Hero from '~/components/widgets/Hero.astro';
 import gridWarp1 from '~/assets/images/hero/grid-warp-1.png';
 import WhatIsPycon from '~/components/widgets/what-is/WhatIsPycon.astro';
 import Schedule from '~/components/widgets/Schedule.astro';
+import Speakers from '~/components/widgets/speakers/Speakers.astro';
 import ContactAndLicense from '~/components/widgets/ContactAndLicense.astro';
 import CodeOfConduct from '~/components/widgets/CodeOfConduct.astro';
 import pyconHero from '~/assets/images/logo.png';
@@ -62,6 +63,10 @@ const cmsData = await fetchCMS();
   <!-- Note Widget ******************* -->
 
   <WhatIsPycon id="what-is-pycon" />
+
+  <!-- Speakers Widget ******************* -->
+
+  <Speakers id="speakers" speakers={cmsData.speakers} />
 
   <!-- Schedule Widget **************** -->
   <Schedule schedule={cmsData.schedule} id="schedule" title="Schedule">
