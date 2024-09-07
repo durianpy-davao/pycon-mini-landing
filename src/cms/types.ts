@@ -14,6 +14,9 @@ export interface CMSDto {
     listSponsorModels: {
       data: Sponsor[];
     };
+    listFaqs: {
+      data: FAQList[];
+    };
   };
 }
 
@@ -78,3 +81,12 @@ export const SPONSOR_PRIORITY: Record<string, number> = {
   contributing: 6,
   community: 6,
 };
+
+export interface FAQList {
+  faqList: FAQ[];
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}

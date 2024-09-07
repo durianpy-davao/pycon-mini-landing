@@ -1,16 +1,22 @@
 ---
 import type { GroupedSponsorTier } from '~/cms/types';
-import WidgetWrapper from '../../ui/WidgetWrapper.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import SponsorType from './SponsorType.astro';
 
 interface Props {
   sponsorsInfo: GroupedSponsorTier[];
+  title?: string;
+  subtitle?: string;
+  id?: string;
+  isDark?: boolean;
+  classes?: { container?: string };
+  bg?: any;
 }
 
-const { sponsorsInfo } = Astro.props;
+const { id, sponsorsInfo } = Astro.props;
 ---
 
-<WidgetWrapper containerClass="mb-10 font-montserrat lg:!pr-0">
+<WidgetWrapper id={id} containerClass="mb-10 font-montserrat lg:!pr-0">
   <!-- HEADER -->
   <div class="bg-container flex flex-col items-center justify-center md:m-5 p-5 md:rounded-2xl">
     <div class="flex w-full justify-center bg-radial-gradient from-[#FEF85D66] via-[#98943866] to-[#73737307] to-80%">
