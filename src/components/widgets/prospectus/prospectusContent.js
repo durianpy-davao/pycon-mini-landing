@@ -65,6 +65,7 @@ export const sponsorshipPackages = [
       'Booth space at the venue.',
       '2 complimentary event passes for your team or guests.',
       'Mention in the official event recap on the DurianPy blog.',
+      'Airing of a 2-minute promotional video during the event and livestream.',
     ],
   },
   {
@@ -77,7 +78,7 @@ export const sponsorshipPackages = [
       'Premium booth location at the venue with priority selection.',
       '4 complimentary event passes for your team or guests.',
       'Dedicated feature in the official event recap on the DurianPy blog.',
-      'Airing of a 2-minute promotional video during the event and livestream.',
+      'Airing of a 5-minute promotional video during the event and livestream.',
     ],
   },
 ];

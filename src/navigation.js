@@ -20,7 +20,11 @@ export const headerData = {
         },
         {
           text: 'What is PyCon?',
-          href: getPermalink('/#what-is-pycon'), // # = Same page anchor link
+          href: getPermalink('/#what-is-pycon'),
+        },
+        {
+          text: 'Speakers',
+          href: getPermalink('/#speakers'),
         },
         {
           text: 'Schedule',
@@ -29,6 +33,14 @@ export const headerData = {
         {
           text: 'Code of Conduct',
           href: getPermalink('/code-of-conduct'),
+        },
+        {
+          text: 'Sponsors',
+          href: getPermalink('/#sponsors'),
+        },
+        {
+          text: 'FAQs',
+          href: getPermalink('/#faqs'),
         },
         {
           text: 'Sponsorship Prospectus',

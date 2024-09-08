@@ -1,0 +1,46 @@
+---
+import { getImage } from 'astro:assets';
+import type { Speaker } from '~/cms/types';
+
+interface Props {
+  speaker: Speaker;
+}
+
+const { speaker } = Astro.props;
+const speakerImage = await getImage({ src: speaker.image, quality: 100, inferSize: true });
+---
+
+<div
+  class="hidden h-80 w-80 sm:block group border-[3px] border-pycon-yellow hover:border-[#DDDDDD] rounded-md relative z-10"
+>
+  <div class="w-full h-full bg-cover bg-no-repeat" style={`background-image: url(${speakerImage.src})`}></div>
+  <div class="group-hover:invisible">
+    <div
+      class="absolute inset-x-0 bottom-0 w-full h-[35%] bg-gradient-to-t from-pycon-yellow via-[#FEF85DAA] to-transparent"
+    >
+    </div>
+    <div class="absolute inset-x-0 bottom-0 preview-text font-bold bottom text-center pb-3">
+      <h3 class="text-2xl">{speaker.name}</h3>
+      <h5 class="text-sm">{speaker.position}</h5>
+    </div>
+  </div>
+  <div
+    class="group-hover:visible z-[1] invisible hidden bg-black bg-opacity-60 h-full w-full absolute inset-0 sm:flex flex-col items-center justify-center"
+  >
+    <div class="text-pycon-yellow text-xl font-bold pb-2">{speaker.name}</div>
+    <div class="text-white text-sm font-bold italic text-center">
+      <br />
+      {speaker.position} @ {speaker.company}
+    </div>
+    {speaker.talkTitle && <div class="text-pycon-yellow font-bold py-5 px-1 text-center">"{speaker.talkTitle}"</div>}
+    <div class="text-white text-sm font-bold text-center px-4">
+      {speaker.bionote}
+    </div>
+  </div>
+</div>
+
+<style>
+  .preview-text {
+    color: #410874;
+  }
+</style>

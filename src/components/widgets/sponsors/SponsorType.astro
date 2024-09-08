@@ -1,0 +1,158 @@
+---
+import { getImage, Image } from 'astro:assets';
+import _grid from '~/assets/images/sponsors/grid.png';
+import type { GroupedSponsorTier } from '~/cms/types';
+
+interface Props {
+  sponsorGroup: GroupedSponsorTier;
+}
+
+const { sponsorGroup } = Astro.props;
+const { priority, displayName, sponsors } = sponsorGroup;
+
+const grid = await getImage({ src: _grid, quality: 100 });
+---
+
+<div class:list={["w-full relative", {hidden: !sponsors.length}]}>
+  <!-- HEADER -->
+  <div
+    class="absolute whitespace-nowrap left-1/2 transform -translate-x-1/2 p-2 px-4 rounded-xl text-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FEF85D] to-[#989438]"
+  >
+    <h3 class="font-extrabold text-lg md:text-2xl uppercase text-[#453C1A]">{displayName}</h3>
+  </div>
+
+  <div class="mt-5 p-1 rounded-lg border-gradient w-full">
+    <!-- SPONSORS -->
+    <div
+      class="text-center p-2 pt-10 sm:p-10 sm:pt-14 flex flex-wrap items-center justify-evenly gap-4 bg-contain"
+      style={`background-image:url(${grid.src})`}
+    >
+      {
+        sponsors.map((sponsor) => {
+          const containerClass = `flex flex-shrink-0 flex-col items-center md:px-0 text-lg md:text-[1.75rem] text-${priority}`;
+          const imageContainerClass = `frame-${priority} mb-2 frame flex items-center justify-center`;
+          const h4Class = `font-bold ${priority === 6 ? 'hidden' : ''}`;
+          const h5Class = `italic font-medium md:text-xl ${priority > 6 ? 'hidden' : ''}`;
+          const linkClassName = `group ${sponsor.website ? 'cursor-pointer' : '' }`
+          const imageClassName = `max-h-full max-w-[30vw] w-auto ${sponsor.website ? 'group-hover:opacity-30 transition-opacity' : '' }`
+          return (
+            <a
+              href={sponsor.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={sponsor.name}
+              class={linkClassName}
+            >
+              <div class={containerClass}>
+                <div class={imageContainerClass}>
+                  <Image
+                    class={imageClassName}
+                    src={sponsor.image}
+                    alt={`${sponsor.name.trim()}-logo`}
+                    width={150}
+                    height={150}
+                  />
+                </div>
+                {
+                  priority < 6 && (
+                    <h4 class={h4Class}>{sponsor.name}</h4>
+                    <h5 class:list={[h5Class, {hidden: !!sponsor.tagline}]}>{sponsor.tagline}</h5>
+                  )
+                }
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .frame-3 {
+    height: 7.5rem; /* 120px */
+  }
+
+  .frame {
+    height: 8.5rem; /* 136px */
+    border: 1px solid #87842B;
+    border-radius: 2rem;
+    padding: 1rem;
+    background: radial-gradient(47% 29.35% at 51.52% 1.74%, rgba(254, 248, 93, 0.5) 0%, rgba(214, 209, 78, 0.5) 33.65%, rgba(188, 184, 69, 0.5) 57.89%, rgba(171, 167, 63, 0.5) 78.2%, rgba(152, 148, 56, 0.5) 100%);
+  }
+
+  .frame-4 {
+    height: 6.25rem; /* 100px */
+  }
+
+  .frame-5 {
+    height: 4.5rem; /* 72px */
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .frame-6 {
+    border: none;
+    background: none;
+    background-color: transparent;
+    height: 3.75rem; /* 60px */
+    padding: 0rem;
+  }
+
+  .text-3 {
+    font-size: 0.813rem; /* 13px */
+  }
+
+  .text-4 {
+    font-size: 0.813rem; /* 13px */
+  }
+
+  .text-5 {
+    font-size: 0.813rem; /* 13px */
+  }
+
+  .border-gradient {
+    border: 4px transparent;
+    border-radius: 1rem;
+    background-image: linear-gradient(#330063, #330063),
+      linear-gradient(180deg, #fef85d 0%, #b5b142 44.5%, #989438 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+  }
+
+  @media (min-width: 640px) {
+    .frame {
+      height: 15rem; /* 240px */
+      padding: 1.5rem;
+    }
+
+    .frame-3 {
+      height: 11.25rem; /* 180px */
+    }
+
+    .frame-4 {
+      height: 9rem; /* 140px */
+    }
+
+    .frame-5 {
+      height: 7.5rem; /* 112px */
+    }
+
+    .frame-6 {
+      height: 6.5rem; /* 96px */
+      padding: 0.8rem;
+    }
+
+    .text-3 {
+      font-size: 1.5rem; /* 24px */
+    }
+
+    .text-4 {
+      font-size: 1.3125rem; /* 21px */
+    }
+
+    .text-5 {
+      font-size: 1.125rem; /* 18px */
+    }
+  }
+</style>

@@ -1,62 +1,18 @@
 ---
-type Speaker = {
-  name: string;
-  title?: string;
-};
-
-type Activity = {
-  title: string;
-  description?: string;
-  speaker?: Speaker;
-  timeStart: number;
-  timeEnd: number;
-};
-
-type Program = Activity[];
+import type { Activity } from '~/cms/types';
 
 interface Props {
-  programStart?: number; // 12-Hour Format
-  programEnd?: number; // 12-Hour Format
-  programScheduleInterval?: number; // in Minutes
-  program?: Program;
+  programStart: number; // 12-Hour Format
+  programEnd: number; // 12-Hour Format
+  programScheduleInterval: number; // in Minutes
+  program: Activity[];
 }
 
 const {
   programStart = 1200,
   programEnd = 1700,
-  programScheduleInterval = 30,
-  program = [
-    {
-      title: 'Registration',
-      timeStart: 1200,
-      timeEnd: 1230,
-    },
-    {
-      title: '1st Event',
-      timeStart: 1230,
-      timeEnd: 1330,
-    },
-    {
-      title: '2nd Event',
-      timeStart: 1350,
-      timeEnd: 1430,
-    },
-    {
-      title: '3rd Event',
-      timeStart: 1430,
-      timeEnd: 1530,
-    },
-    {
-      title: '4th Event',
-      timeStart: 1540,
-      timeEnd: 1620,
-    },
-    {
-      title: 'Closing Remarks',
-      timeStart: 1645,
-      timeEnd: 1655,
-    },
-  ],
+  programScheduleInterval = 60,
+  program
 } = Astro.props as Props;
 
 const MINUTES_PER_ROW_SPAN = 5
@@ -104,8 +60,8 @@ const formatTime = (time: number) => {
 };
 
 const getActivitySpan = (activity: Activity) => {
-  const startMinutes = convertTimeToMinutes(activity.timeStart);
-  const endMinutes = convertTimeToMinutes(activity.timeEnd);
+  const startMinutes = convertTimeToMinutes(activity.startTime);
+  const endMinutes = convertTimeToMinutes(activity.endTime);
   const activityDuration = endMinutes - startMinutes;
 
   const rowSpan =  activityDuration / MINUTES_PER_ROW_SPAN
@@ -139,14 +95,15 @@ const timeStyle = `grid-row: span ${intervalSpan}/ span ${intervalSpan}`;
             >
               <span class="flex items-start w-full justify-between">
                 <span>
-                  <h3 class="text-lg md:text-xl text-pycon-yellow font-extrabold text-wrap">{event.title}</h3>
+                  <h3 class="text-lg md:text-xl text-pycon-yellow font-extrabold text-wrap">{event.scheduleTitle}</h3>
+                  <h4 class="text-lg md:text-lg text-pycon-yellow font-bold italic text-wrap">{event.speaker?.talkTitle}</h4>
                   {event.speaker && (
                       <p class="text-sm md:text-[14px] text-wrap">{event.speaker.name}</p>
-                      <p class="text-sm md:text-[14px] text-wrap">{event.speaker.title}</p>
+                      <p class="text-sm md:text-[14px] text-wrap font-medium">{event.speaker.position} @ {event.speaker.company}</p>
                   )}
                 </span>
                 <p class="text-pycon-yellow text-end text-nowrap md:text-lg">
-                  {formatTime(event.timeStart)} - {formatTime(event.timeEnd)}
+                  {formatTime(event.startTime)} - {formatTime(event.endTime)}
                 </p>
               </span>
             </div>
