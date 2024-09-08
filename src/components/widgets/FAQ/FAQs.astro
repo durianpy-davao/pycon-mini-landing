@@ -1,0 +1,73 @@
+---
+import type { FAQ } from '~/cms/types';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import FAQItem from './FAQItem.astro';
+import { splitArray } from '~/utils/utils';
+import { getImage } from 'astro:assets';
+import _gridBg from '~/assets/images/faqs/grid.png';
+
+interface Props {
+  faqs: FAQ[];
+  title?: string;
+  subtitle?: string;
+  id?: string;
+  isDark?: boolean;
+  classes?: { container?: string };
+  bg?: any;
+}
+
+const { id, faqs } = Astro.props;
+const [faqs_1, faqs_2] = splitArray(faqs);
+const gridBg = await getImage({ src: _gridBg, quality: 100 });
+---
+
+<WidgetWrapper id={id} containerClass="mb-10 relative">
+  <div class="space-y-5 text-center mb-8">
+    <h1 class="font-extrabold text-4xl md:text-5xl md:leading-[70px]">
+      <span class="text-pycon-yellow">Frequently Asked<br /></span> Questions
+    </h1>
+    <p class="sm:text-sm md:text-xl">Have more questions?<br />Message us at <br />durianpy.davao@gmail.com</p>
+  </div>
+  <div id="faq-list" class="lg:grid grid-cols-2 gap-5 block">
+    <ul class="space-y-4 px-4 md:px-8">{faqs_1.map((faq) => <FAQItem faq={faq} />)}</ul>
+    <ul class="space-y-4 px-4 md:px-8">{faqs_2.map((faq) => <FAQItem faq={faq} />)}</ul>
+  </div>
+  <Fragment slot="bg">
+    <div
+      class="absolute inset-0 bottom-0 z-[-1] mix-blend-luminosity md:bg-contain"
+      style={`background-image: url(${gridBg.src}); background-repeat: repeat-x;`}
+    >
+    </div>
+  </Fragment>
+</WidgetWrapper>
+
+<script>
+  const setupFaqSection = () => {
+    const faqButtons = document.querySelectorAll('#faq-list button');
+
+    const toggleSection = (currentIndex: number, index: number, button: Element) => {
+      const section = button.nextElementSibling;
+      if (!section) return;
+
+      if (currentIndex === index) {
+        section.classList.toggle('grid-rows-[1fr]');
+        section.classList.toggle('grid-rows-[0fr]');
+        section.classList.toggle('expanded');
+      } else {
+        section.classList.remove('grid-rows-[1fr]', 'expanded');
+        section.classList.add('grid-rows-[0fr]');
+      }
+    };
+
+    faqButtons.forEach((button, currentBtnIndex) => {
+      button.addEventListener('click', () => {
+        faqButtons.forEach((otherButton, otherBtnIndex) => {
+          toggleSection(currentBtnIndex, otherBtnIndex, otherButton);
+        });
+      });
+    });
+  };
+
+  document.addEventListener('astro:page-load', setupFaqSection, { once: true });
+  document.addEventListener('astro:after-swap', setupFaqSection);
+</script>

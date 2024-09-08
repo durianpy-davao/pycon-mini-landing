@@ -50,3 +50,14 @@ export const toUiAmount = (amount: number) => {
 
   return value;
 };
+
+export function splitArray<T>(array: T[], index?: number): [T[], T[]] {
+  // If no index is provided, split the array in half
+  const splitIndex = index !== undefined ? index : Math.ceil(array.length / 2);
+
+  // Split the array into two parts
+  const firstPart = array.slice(0, splitIndex);
+  const secondPart = array.slice(splitIndex);
+
+  return [firstPart, secondPart];
+}

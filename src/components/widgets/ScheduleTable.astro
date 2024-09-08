@@ -99,7 +99,7 @@ const timeStyle = `grid-row: span ${intervalSpan}/ span ${intervalSpan}`;
                   <h4 class="text-lg md:text-lg text-pycon-yellow font-bold italic text-wrap">{event.speaker?.talkTitle}</h4>
                   {event.speaker && (
                       <p class="text-sm md:text-[14px] text-wrap">{event.speaker.name}</p>
-                      <p class="text-sm md:text-[14px] text-wrap font-medium">{event.speaker.position}</p>
+                      <p class="text-sm md:text-[14px] text-wrap font-medium">{event.speaker.position} @ {event.speaker.company}</p>
                   )}
                 </span>
                 <p class="text-pycon-yellow text-end text-nowrap md:text-lg">

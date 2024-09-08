@@ -11,60 +11,68 @@ export async function fetchCMS() {
       body: JSON.stringify({
         query: `
              query {
-                listEventSchedules {
+                  listEventSchedules {
                     data {
+                      scheduleTitle
+                      scheduleStartTime
+                      scheduleEndTime
+                      scheduleActivities {
                         scheduleTitle
-                        scheduleStartTime
-                        scheduleEndTime
-                        scheduleActivities {
-                            scheduleTitle
-                            speaker {
-                                image
-                                name
-                                talkTitle
-                                company
-                                position
-                                bionote
-                            }
-                            startTime
-                            endTime
+                        speaker {
+                          image
+                          name
+                          talkTitle
+                          company
+                          position
+                          bionote
                         }
+                        startTime
+                        endTime
+                      }
                     }
-                }
-                listSpeakerModels {
+                  }
+                  listSpeakerModels {
                     data {
-                        image
-                        name
-                        talkTitle
-                        company
-                        position
-                        bionote
+                      image
+                      name
+                      talkTitle
+                      company
+                      position
+                      bionote
                     }
-                }
-                listSponsorTierModels{
+                  }
+                  listSponsorTierModels {
                     data {
+                      name
+                      order
+                      displayName
+                      billingAcknowledgement
+                    }
+                  }
+                  listSponsorModels {
+                    data {
+                      image
+                      name
+                      tagline
+                      position
+                      website
+                      sponsorTier {
                         name
                         order
                         displayName
                         billingAcknowledgement
+                      }
                     }
-                }
-                listSponsorModels{
+                  }
+                  listFaqs {
                     data {
-                        image
-                        name
-                        tagline
-                        position
-                        website
-                        sponsorTier {
-                            name
-                            order
-                            displayName
-                            billingAcknowledgement
-                        }
+                      faqList {
+                        question
+                        answer
+                      }
                     }
-                }
-            }
+                  }
+              }
         `,
       }),
     });

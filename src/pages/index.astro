@@ -12,6 +12,7 @@ import CodeOfConduct from '~/components/widgets/CodeOfConduct.astro';
 import pyconHero from '~/assets/images/logo.png';
 import Sponsors from '~/components/widgets/sponsors/Sponsors.astro';
 import { fetchCMS } from '~/cms/fetch';
+import FAQs from '~/components/widgets/FAQ/FAQs.astro';
 
 const metadata = {
   title: 'PyConf Mini Davao',
@@ -77,8 +78,11 @@ const cmsData = await fetchCMS();
 
   <!-- Code of Conduct Widget ******** -->
   <CodeOfConduct />
-  <ContactAndLicense id="contact-us" />
 
   <!-- Sponsorship Widget ************ -->
-  <Sponsors sponsorsInfo={cmsData.sponsorsInfo} />
+  <Sponsors id="sponsors" sponsorsInfo={cmsData.sponsorsInfo} />
+
+  <FAQs id="faqs" faqs={cmsData.faqs} />
+
+  <ContactAndLicense id="contact-us" />
 </Layout>

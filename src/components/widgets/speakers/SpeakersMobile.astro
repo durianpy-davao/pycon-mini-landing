@@ -31,11 +31,10 @@ const { speaker } = Astro.props;
   <div class="p-4 hidden w-full inset-0 group-hover:flex flex-col items-center justify-center text-center">
     <div class="text-pycon-yellow text-2xl font-bold pb-2">{speaker.name}</div>
     <div class="text-white font-bold italic">
-      {speaker.talkTitle}
       <br />
-      {speaker.position} | {speaker.company}
+      {speaker.position} @ {speaker.company}
     </div>
-    <div class="text-pycon-yellow text-lg font-bold py-5">"{speaker.talkTitle}"</div>
+    {speaker.talkTitle && <div class="text-pycon-yellow text-lg font-bold py-5">"{speaker.talkTitle}"</div>}
     <div class="text-white font-bold">
       {speaker.bionote}
     </div>
