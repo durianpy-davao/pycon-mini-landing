@@ -3,7 +3,7 @@ import type { FAQ } from '~/cms/types';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import FAQItem from './FAQItem.astro';
 import { splitArray } from '~/utils/utils';
-import { getImage, Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import _gridBg from '~/assets/images/faqs/grid.png';
 
 interface Props {
@@ -29,23 +29,17 @@ const gridBg = await getImage({ src: _gridBg, quality: 100 });
     <p class="sm:text-sm md:text-xl">Have more questions?<br />Message us at <br />durianpy.davao@gmail.com</p>
   </div>
   <div id="faq-list" class="lg:grid grid-cols-2 gap-5 block">
-    <ul class="space-y-4">{faqs_1.map((faq) => <FAQItem faq={faq} />)}</ul>
-    <ul class="space-y-4">{faqs_2.map((faq) => <FAQItem faq={faq} />)}</ul>
+    <ul class="space-y-4 px-4 md:px-8">{faqs_1.map((faq) => <FAQItem faq={faq} />)}</ul>
+    <ul class="space-y-4 px-4 md:px-8">{faqs_2.map((faq) => <FAQItem faq={faq} />)}</ul>
   </div>
-  <div
-    class="absolute inset-0 bottom-0 z-[-1] mix-blend-luminosity md:bg-contain"
-    style={`background-image: url(${gridBg.src}); background-repeat: repeat-x;`}
-  >
-  </div>
+  <Fragment slot="bg">
+    <div
+      class="absolute inset-0 bottom-0 z-[-1] mix-blend-luminosity md:bg-contain"
+      style={`background-image: url(${gridBg.src}); background-repeat: repeat-x;`}
+    >
+    </div>
+  </Fragment>
 </WidgetWrapper>
-
-<!-- <style>
-  .gridBg {
-    background-repeat: repeat-x;
-    background-size: cover;
-  }
-
-</style> -->
 
 <script>
   const setupFaqSection = () => {
