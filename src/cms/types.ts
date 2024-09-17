@@ -59,6 +59,7 @@ export interface Sponsor {
   position: string;
   sponsorTier: SponsorTier;
   website?: string;
+  priority: number | null;
 }
 
 export interface GroupedSponsorTier {

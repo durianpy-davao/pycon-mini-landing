@@ -96,7 +96,7 @@ const timeStyle = `grid-row: span ${intervalSpan}/ span ${intervalSpan}`;
               <span class="flex items-start w-full justify-between">
                 <span>
                   <h3 class="text-lg md:text-xl text-pycon-yellow font-extrabold text-wrap">{event.scheduleTitle}</h3>
-                  <h4 class="text-lg md:text-lg text-pycon-yellow font-bold italic text-wrap">{event.speaker?.talkTitle}</h4>
+                  {event.speaker?.talkTitle && <h4 class="text-lg md:text-lg text-pycon-yellow font-bold italic text-wrap">{event.speaker.talkTitle}</h4>}
                   {event.speaker && (
                       <p class="text-sm md:text-[14px] text-wrap">{event.speaker.name}</p>
                       <p class="text-sm md:text-[14px] text-wrap font-medium">{event.speaker.position} @ {event.speaker.company}</p>
