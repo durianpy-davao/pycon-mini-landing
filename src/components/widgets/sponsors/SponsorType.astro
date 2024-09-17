@@ -32,11 +32,11 @@ const grid = await getImage({ src: _grid, quality: 100 });
           const priority = sponsor.priority ?? sponsorGroup.priority;
           
           const containerClass = `flex flex-shrink-0 flex-col items-center md:px-0 text-lg md:text-[1.75rem] text-${priority}`;
-          const imageContainerClass = `frame-${priority} mb-2 frame flex items-center justify-center`;
+          const imageContainerClass = `frame frame-${priority} mb-2 flex items-center justify-center`;
           const h4Class = `font-bold ${priority === 6 ? 'hidden' : ''}`;
           const h5Class = `italic font-medium md:text-xl ${priority > 6 ? 'hidden' : ''}`;
           const linkClassName = `group ${sponsor.website ? 'cursor-pointer' : '' }`
-          const imageClassName = `max-h-full max-w-[30vw] w-auto ${sponsor.website ? 'group-hover:opacity-30 transition-opacity' : '' }`
+          const imageClassName = `max-h-full w-auto ${sponsor.website ? 'group-hover:opacity-30 transition-opacity' : '' }`
           return (
             <a
               href={sponsor.website}
@@ -72,11 +72,13 @@ const grid = await getImage({ src: _grid, quality: 100 });
 
 <style>
   .frame-3 {
-    height: 7.5rem !important; /* 120px */
+    height: 7.5rem; /* 120px */
+    max-width: 80%;
   }
 
   .frame {
     height: 9.5rem;
+    max-width: 85%;
     border: 1px solid #87842B;
     border-radius: 2rem;
     padding: 1rem;
@@ -85,12 +87,14 @@ const grid = await getImage({ src: _grid, quality: 100 });
 
   .frame-4 {
     height: 6.25rem; /* 100px */
+    max-width: 75%;
   }
 
   .frame-5 {
     height: 4.5rem; /* 72px */
     padding: 0.5rem;
     border-radius: 1.5rem;
+    max-width: 73%;
   }
 
   .frame-6 {
@@ -129,7 +133,7 @@ const grid = await getImage({ src: _grid, quality: 100 });
     }
 
     .frame-3 {
-      height: 11.25rem; /* 180px */
+      height: 11rem; /* 180px */
     }
 
     .frame-4 {
