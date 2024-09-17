@@ -55,6 +55,7 @@ export async function fetchCMS() {
                       name
                       tagline
                       position
+                      priority                  
                       website
                       sponsorTier {
                         name
