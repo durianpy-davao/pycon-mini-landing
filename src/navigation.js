@@ -9,6 +9,8 @@ export const pyconHeader = {
   ],
 };
 
+export const TICKET_LINK = 'https://www.techtix.app/pycon-mini-davao-2024/register';
+
 export const headerData = {
   links: [
     {
@@ -16,7 +18,7 @@ export const headerData = {
       links: [
         {
           text: 'Get Tickets',
-          href: 'https://www.techtix.app/pycon-mini-davao-2024/preregister',
+          href: TICKET_LINK,
         },
         {
           text: 'What is PyCon?',
