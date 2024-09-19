@@ -13,6 +13,7 @@ import pyconHero from '~/assets/images/logo.png';
 import Sponsors from '~/components/widgets/sponsors/Sponsors.astro';
 import { fetchCMS } from '~/cms/fetch';
 import FAQs from '~/components/widgets/FAQ/FAQs.astro';
+import { TICKET_LINK } from '~/navigation';
 
 const metadata = {
   title: 'PyConf Mini Davao',
@@ -31,7 +32,7 @@ const cmsData = await fetchCMS();
       {
         variant: 'primary',
         text: 'Get Tickets',
-        href: 'https://www.techtix.app/pycon-mini-davao-2024/preregister',
+        href: TICKET_LINK,
         target: '_blank',
       },
     ]}
