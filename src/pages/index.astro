@@ -11,6 +11,7 @@ import ContactAndLicense from '~/components/widgets/ContactAndLicense.astro';
 import CodeOfConduct from '~/components/widgets/CodeOfConduct.astro';
 import pyconHero from '~/assets/images/logo.png';
 import Sponsors from '~/components/widgets/sponsors/Sponsors.astro';
+import Volunteers from '~/components/widgets/volunteers/Volunteers.astro';
 import { fetchCMS } from '~/cms/fetch';
 import FAQs from '~/components/widgets/FAQ/FAQs.astro';
 import { TICKET_LINK } from '~/navigation';
@@ -21,6 +22,7 @@ const metadata = {
 };
 
 const cmsData = await fetchCMS();
+console.log(cmsData.volunteers);
 ---
 
 <Layout metadata={metadata}>
@@ -77,11 +79,15 @@ const cmsData = await fetchCMS();
     </Fragment>
   </Schedule>
 
+  
   <!-- Code of Conduct Widget ******** -->
   <CodeOfConduct />
-
+  
   <!-- Sponsorship Widget ************ -->
   <Sponsors id="sponsors" sponsorsInfo={cmsData.sponsorsInfo} />
+
+  <!-- Volunteers Widget ************** -->
+  <Volunteers id="volunteers" volunteersInfo={cmsData.volunteers} />
 
   <FAQs id="faqs" faqs={cmsData.faqs} />
 
