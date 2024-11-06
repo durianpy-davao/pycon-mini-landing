@@ -2,6 +2,7 @@
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Volunteer } from '~/cms/types';
 import { Image } from 'astro:assets';
+import VolunteerCommittee from './VolunteerCommittee.astro';
 
 interface Props {
   volunteersInfo: Volunteer[];
@@ -18,21 +19,10 @@ const { id, volunteersInfo } = Astro.props;
 // Committee order (from Figma)
 const committeeOrder = ['Creatives', 'Communications', 'Programs', 'Promotions', 'Logistics', 'Technicals', 'Website'];
 
-const groupedVolunteers = committeeOrder.map(committee => ({
+const committees = committeeOrder.map(committee => ({
   title: committee,
   members: volunteersInfo.filter(volunteer => volunteer.committee.title === committee)
 }));
-
-// For volunteer name consistency
-const getFirstName = (name: string) => {
-  const nameParts = name.split(' ');
-  return nameParts[0]; 
-};
-
-const getLastName = (name: string) => {
-  const nameParts = name.split(' ');
-  return nameParts.length > 1 ? nameParts[nameParts.length - 1] : '';
-};
 ---
 
 <WidgetWrapper id={id} containerClass="mb-10 font-monsterrat lg!pr-0">
@@ -74,58 +64,11 @@ const getLastName = (name: string) => {
         </div>
       </div>
 
+
       <!-- Committee Members -->
-      {groupedVolunteers.map(({ title, members }) => {
-        // Separate committee heads
-        const committeeHeads = members.filter(volunteer => volunteer.isCommitteeHead);
-        const otherMembers = members.filter(volunteer => !volunteer.isCommitteeHead);
-        return (
-          <div class="w-full relative mb-5">
-            <div class="committee-container w-full">
-              <h3 class="text-center font-bold text-2xl md:text-4xl uppercase committee-title">{title}</h3>
-              {committeeHeads.length > 0 && (
-                <div class="text-center p-2 pt-6 sm:p-6 flex flex-wrap items-center justify-center gap-6 sm:gap-40 bg-contain">
-                  {committeeHeads.map(volunteer => (
-                    <div class="flex flex-col items-center text-lg md:text-xl w-[150px]">
-                      <h4 class="mb-3 font-semibold text-lg leading-5 uppercase text-[#D5B5FF]">Committee Head</h4>
-                      <div class="head-image-container">
-                        <Image
-                          src={volunteer.image}
-                          alt={volunteer.name}
-                          class="head-frame"
-                          width="130"
-                          height="130"
-                          loading="lazy"
-                        />
-                      </div>
-                      <p class="volunteer-first-name">{getFirstName(volunteer.name)}</p>
-                      <p class="volunteer-last-name">{getLastName(volunteer.name)}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-              {otherMembers.length > 0 && (
-                <div class="text-center p-2 pt-10 sm:p-6 flex flex-wrap items-center justify-center gap-6 sm:gap-32 bg-contain">
-                  {otherMembers.map(volunteer => (
-                    <div class="flex flex-col items-center text-lg md:text-xl w-[150px]">
-                      <Image
-                        src={volunteer.image}
-                        alt={volunteer.name}
-                        class="frame"
-                        width="130"
-                        height="130"
-                        loading="lazy"
-                      />
-                      <p class="volunteer-first-name">{getFirstName(volunteer.name)}</p>
-                      <p class="volunteer-last-name">{getLastName(volunteer.name)}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        );
-      })}
+      {committees.map(({ title, members }) => (
+        <VolunteerCommittee title={title} members={members} />
+      ))}
     </div>
   </div>
 </WidgetWrapper>

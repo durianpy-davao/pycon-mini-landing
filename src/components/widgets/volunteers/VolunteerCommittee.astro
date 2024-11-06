@@ -1,0 +1,126 @@
+---
+import type { Volunteer } from '~/cms/types';
+import { Image } from 'astro:assets';
+import { getFirstName, getLastName } from '~/utils/utils';
+
+interface Props {
+  title: string;
+  members: Volunteer[];
+}
+
+const { title, members } = Astro.props;
+
+const committeeHeads = members.filter(volunteer => volunteer.isCommitteeHead);
+const otherMembers = members.filter(volunteer => !volunteer.isCommitteeHead);
+---
+
+<div class="w-full relative mb-5">
+  <div class="committee-container w-full">
+    <h3 class="text-center font-bold text-2xl md:text-4xl uppercase committee-title">{title}</h3>
+    
+    <!-- Display Committee Head -->
+    {committeeHeads.length > 0 && (
+      <div class="text-center p-2 pt-6 sm:p-6 flex flex-wrap items-center justify-center gap-6 sm:gap-40 bg-contain">
+        {committeeHeads.map(volunteer => (
+          <div class="flex flex-col items-center text-lg md:text-xl w-[150px]">
+            <h4 class="mb-3 font-semibold text-lg leading-5 uppercase text-[#D5B5FF]">Committee Head</h4>
+            <div class="head-image-container">
+              <Image
+                src={volunteer.image}
+                alt={volunteer.name}
+                class="head-frame"
+                width="130"
+                height="130"
+                loading="lazy"
+              />
+            </div>
+            <p class="volunteer-first-name">{getFirstName(volunteer.name)}</p>
+            <p class="volunteer-last-name">{getLastName(volunteer.name)}</p>
+          </div>
+        ))}
+      </div>
+    )}
+    {otherMembers.length > 0 && (
+      <div class="text-center p-2 pt-10 sm:p-6 flex flex-wrap items-center justify-center gap-6 sm:gap-32 bg-contain">
+        {otherMembers.map(volunteer => (
+          <div class="flex flex-col items-center text-lg md:text-xl w-[150px]">
+            <Image
+              src={volunteer.image}
+              alt={volunteer.name}
+              class="frame"
+              width="130"
+              height="130"
+              loading="lazy"
+            />
+            <p class="volunteer-first-name">{getFirstName(volunteer.name)}</p>
+            <p class="volunteer-last-name">{getLastName(volunteer.name)}</p>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .committee-container {
+    border: 2px solid #9747FF;
+    background: #9747FF;
+    background: rgba(151, 71, 255, 0.17);
+    border-radius: 0.5rem;
+    margin-top: 1rem; 
+    padding: 0.25rem;
+  }
+
+  .committee-title {
+    background: radial-gradient(50% 50% at 50% 50%, #C191FF 0%, #735799 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-top: 1rem;
+  }
+
+  .head-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px; 
+    height: 160px;
+    border-radius: 2rem;
+    background: radial-gradient(64.42% 44.94% at 50.28% 0%, #9747FF 0%, #7939CC 18.64%, #6A32B3 46.91%, #622EA6 65.53%, #5B2B99 100%);
+
+    .head-frame {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      object-fit: cover;
+    }
+  }
+
+  .frame {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    object-fit: cover;
+    border: 4px solid #9747FF;
+    border-radius: 50%;
+    overflow: hidden; 
+  }
+
+  .volunteer-first-name {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #D5B5FF;
+    line-height: 1.25rem;
+    padding-top: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .volunteer-last-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #D5B5FF;
+    line-height: 1.25rem;
+  }
+</style>
