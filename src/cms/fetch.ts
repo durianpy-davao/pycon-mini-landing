@@ -73,6 +73,16 @@ export async function fetchCMS() {
                       }
                     }
                   }
+                  listVolunteers {
+                    data {
+                      name
+                      isCommitteeHead
+                      image
+                      committee {
+                        title
+                      }
+                    }
+                  }
               }
         `,
       }),
