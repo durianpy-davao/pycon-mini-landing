@@ -61,3 +61,12 @@ export function splitArray<T>(array: T[], index?: number): [T[], T[]] {
 
   return [firstPart, secondPart];
 }
+
+export const getFirstName = (fullName: string): string => {
+  return fullName.split(' ')[0];
+}
+
+export const getLastName = (fullName: string): string => {
+  const nameParts = fullName.split(' ');
+  return nameParts.length > 1 ? nameParts[nameParts.length - 1] : '';
+}

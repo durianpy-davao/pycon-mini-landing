@@ -17,6 +17,9 @@ export interface CMSDto {
     listFaqs: {
       data: FAQList[];
     };
+    listVolunteers: {
+      data: Volunteer[];
+    };
   };
 }
 
@@ -90,4 +93,13 @@ export interface FAQList {
 export interface FAQ {
   question: string;
   answer: string;
+}
+
+export interface Volunteer {
+  name: string;
+  isCommitteeHead: boolean;
+  committee: {
+    title: string;
+  };
+  image: string;
 }

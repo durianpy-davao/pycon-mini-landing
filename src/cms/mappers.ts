@@ -9,6 +9,7 @@ import {
   type GroupedSponsorTier,
   type FAQ,
   type FAQList,
+  type Volunteer,
 } from './types';
 
 interface CMSData {
@@ -16,6 +17,7 @@ interface CMSData {
   sponsorsInfo: GroupedSponsorTier[];
   speakers: Speaker[];
   faqs: FAQ[];
+  volunteers: Volunteer[];
 }
 
 export const emptyResponse: CMSData = {
@@ -28,6 +30,7 @@ export const emptyResponse: CMSData = {
   sponsorsInfo: [],
   speakers: [],
   faqs: [],
+  volunteers: [],
 };
 
 export function mapCMSResponseToModel({ data }: CMSDto): CMSData {
@@ -35,13 +38,14 @@ export function mapCMSResponseToModel({ data }: CMSDto): CMSData {
     return emptyResponse;
   }
 
-  const { listEventSchedules, listSpeakerModels, listSponsorModels, listSponsorTierModels, listFaqs } = data;
+  const { listEventSchedules, listSpeakerModels, listSponsorModels, listSponsorTierModels, listFaqs, listVolunteers } = data;
 
   return {
     schedule: eventScheduleMapper(listEventSchedules.data[0]),
     sponsorsInfo: sponsorsMapper(listSponsorTierModels.data, listSponsorModels.data),
     speakers: speakersMapper(listSpeakerModels.data),
     faqs: faqsMapper(listFaqs.data),
+    volunteers: volunteersMapper(listVolunteers.data),
   };
 }
 
@@ -83,4 +87,8 @@ function faqsMapper(faqsList: FAQList[]) {
   }
   const faqs = faqsList[0].faqList;
   return faqs;
+}
+
+function volunteersMapper(volunteers: Volunteer[]) {
+  return volunteers;
 }
